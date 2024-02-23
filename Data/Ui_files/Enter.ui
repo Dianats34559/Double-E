@@ -17,8 +17,7 @@
    <property name="styleSheet">
     <string notr="true">background-color: rgb(255, 0, 255);
 background-color: rgba(0, 0, 0, 25);
-
-</string>
+    </string>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout_2">
     <item>
