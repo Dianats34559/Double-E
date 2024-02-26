@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>731</width>
+    <width>761</width>
     <height>607</height>
    </rect>
   </property>
@@ -38,7 +38,7 @@
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <widget class="QLabel" name="label_2">
+        <widget class="QLabel" name="name">
          <property name="font">
           <font>
            <pointsize>10</pointsize>
@@ -50,40 +50,19 @@
         </widget>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_4">
-         <item>
-          <widget class="QLineEdit" name="lineEdit">
-           <property name="text">
-            <string>Не звони и не пиши</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_3">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
+        <layout class="QHBoxLayout" name="horizontalLayout_4"/>
        </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_3">
          <item>
-          <widget class="QRadioButton" name="radioButton_2">
+          <widget class="QRadioButton" name="man">
            <property name="text">
             <string>М</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QRadioButton" name="radioButton">
+          <widget class="QRadioButton" name="woman">
            <property name="text">
             <string>Ж</string>
            </property>
@@ -138,7 +117,7 @@
     <item>
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
-       <widget class="QLabel" name="label_5">
+       <widget class="QLabel" name="photo">
         <property name="maximumSize">
          <size>
           <width>300</width>
@@ -204,7 +183,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>731</width>
+     <width>761</width>
      <height>26</height>
     </rect>
    </property>
@@ -212,36 +191,36 @@
     <property name="title">
      <string>Меню</string>
     </property>
-    <addaction name="action"/>
-    <addaction name="action_2"/>
-    <addaction name="action_3"/>
-    <addaction name="action_4"/>
-    <addaction name="action_5"/>
+    <addaction name="profile"/>
+    <addaction name="theory"/>
+    <addaction name="practise"/>
+    <addaction name="game"/>
+    <addaction name="meme"/>
    </widget>
    <addaction name="menu"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="action">
+  <action name="profile">
    <property name="text">
     <string>Профиль</string>
    </property>
   </action>
-  <action name="action_2">
+  <action name="theory">
    <property name="text">
     <string>Теория</string>
    </property>
   </action>
-  <action name="action_3">
+  <action name="practise">
    <property name="text">
     <string>Практика</string>
    </property>
   </action>
-  <action name="action_4">
+  <action name="game">
    <property name="text">
     <string>Игры</string>
    </property>
   </action>
-  <action name="action_5">
+  <action name="meme">
    <property name="text">
     <string>Мемы</string>
    </property>

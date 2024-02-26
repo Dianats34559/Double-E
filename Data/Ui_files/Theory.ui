@@ -20,9 +20,12 @@
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Fixed</enum>
+      </property>
       <property name="sizeHint" stdset="0">
        <size>
-        <width>40</width>
+        <width>100</width>
         <height>20</height>
        </size>
       </property>
@@ -55,7 +58,7 @@
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>278</width>
+           <width>542</width>
            <height>530</height>
           </rect>
          </property>
@@ -90,9 +93,12 @@ p, li { white-space: pre-wrap; }
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Fixed</enum>
+      </property>
       <property name="sizeHint" stdset="0">
        <size>
-        <width>40</width>
+        <width>100</width>
         <height>20</height>
        </size>
       </property>
@@ -113,47 +119,47 @@ p, li { white-space: pre-wrap; }
     <property name="title">
      <string>Меню</string>
     </property>
-    <addaction name="action"/>
-    <addaction name="action_2"/>
-    <addaction name="action_3"/>
-    <addaction name="action_4"/>
-    <addaction name="action_5"/>
+    <addaction name="profile"/>
+    <addaction name="theory"/>
+    <addaction name="practise"/>
+    <addaction name="game"/>
+    <addaction name="meme"/>
    </widget>
    <widget class="QMenu" name="menu_2">
     <property name="title">
      <string>Темы</string>
     </property>
-    <addaction name="action_6"/>
+    <addaction name="function"/>
    </widget>
    <addaction name="menu"/>
    <addaction name="menu_2"/>
   </widget>
-  <action name="action">
+  <action name="profile">
    <property name="text">
     <string>Профиль</string>
    </property>
   </action>
-  <action name="action_2">
+  <action name="theory">
    <property name="text">
     <string>Теория</string>
    </property>
   </action>
-  <action name="action_3">
+  <action name="practise">
    <property name="text">
     <string>Практика</string>
    </property>
   </action>
-  <action name="action_4">
+  <action name="game">
    <property name="text">
     <string>Игры</string>
    </property>
   </action>
-  <action name="action_5">
+  <action name="meme">
    <property name="text">
     <string>Мемы</string>
    </property>
   </action>
-  <action name="action_6">
+  <action name="function">
    <property name="text">
     <string>Функция</string>
    </property>

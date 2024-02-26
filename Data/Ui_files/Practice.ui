@@ -20,9 +20,12 @@
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Fixed</enum>
+      </property>
       <property name="sizeHint" stdset="0">
        <size>
-        <width>40</width>
+        <width>100</width>
         <height>20</height>
        </size>
       </property>
@@ -39,14 +42,26 @@
          <property name="geometry">
           <rect>
            <x>0</x>
-           <y>0</y>
-           <width>235</width>
-           <height>561</height>
+           <y>-594</y>
+           <width>490</width>
+           <height>1155</height>
           </rect>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_2">
           <item>
            <widget class="QTextBrowser" name="textBrowser">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="baseSize">
+             <size>
+              <width>0</width>
+              <height>100</height>
+             </size>
+            </property>
             <property name="html">
              <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -65,6 +80,12 @@ p, li { white-space: pre-wrap; }
           </item>
           <item>
            <widget class="QTextBrowser" name="textBrowser_2">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="html">
              <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -78,16 +99,43 @@ p, li { white-space: pre-wrap; }
            <widget class="QLineEdit" name="lineEdit_2"/>
           </item>
           <item>
-           <widget class="QTextBrowser" name="textBrowser_3"/>
+           <widget class="QTextBrowser" name="textBrowser_3">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+           </widget>
           </item>
           <item>
            <widget class="QLineEdit" name="lineEdit_3"/>
           </item>
           <item>
-           <widget class="QTextBrowser" name="textBrowser_4"/>
+           <widget class="QTextBrowser" name="textBrowser_4">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+           </widget>
           </item>
           <item>
            <widget class="QLineEdit" name="lineEdit_4"/>
+          </item>
+          <item>
+           <widget class="QTextBrowser" name="textBrowser_5">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="lineEdit_5"/>
           </item>
          </layout>
         </widget>
@@ -96,13 +144,16 @@ p, li { white-space: pre-wrap; }
      </layout>
     </item>
     <item>
-     <spacer name="horizontalSpacer_2">
+     <spacer name="horizontalSpacer_4">
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Fixed</enum>
+      </property>
       <property name="sizeHint" stdset="0">
        <size>
-        <width>40</width>
+        <width>100</width>
         <height>20</height>
        </size>
       </property>
@@ -120,13 +171,27 @@ p, li { white-space: pre-wrap; }
     </rect>
    </property>
    <widget class="QMenu" name="menu">
+    <property name="geometry">
+     <rect>
+      <x>353</x>
+      <y>211</y>
+      <width>159</width>
+      <height>174</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
     <property name="title">
      <string>Меню</string>
     </property>
-    <addaction name="action"/>
-    <addaction name="action_2"/>
-    <addaction name="action_3"/>
-    <addaction name="action_4"/>
+    <addaction name="profile"/>
+    <addaction name="theory"/>
+    <addaction name="practise"/>
+    <addaction name="game"/>
     <addaction name="action_5"/>
    </widget>
    <widget class="QMenu" name="menu_2">
@@ -137,22 +202,22 @@ p, li { white-space: pre-wrap; }
    <addaction name="menu"/>
    <addaction name="menu_2"/>
   </widget>
-  <action name="action">
+  <action name="profile">
    <property name="text">
     <string>Профиль</string>
    </property>
   </action>
-  <action name="action_2">
+  <action name="theory">
    <property name="text">
     <string>Теория</string>
    </property>
   </action>
-  <action name="action_3">
+  <action name="practise">
    <property name="text">
     <string>Практика</string>
    </property>
   </action>
-  <action name="action_4">
+  <action name="game">
    <property name="text">
     <string>Игры</string>
    </property>
