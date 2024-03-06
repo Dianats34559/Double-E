@@ -1,15 +1,17 @@
 import socket
 
 server = socket.create_server(('192.168.103.25', 8888))
+server.listen()
+
+print('!listen')
+
+client, address = server.accept()
+
+print('!client connected')
 
 while True:
-    server.listen()
-    print('listen...')
-    print('')
-    client, address = server.accept()
-    print('client connected')
-    print('')
-    data = client.recv(1024).decode('utf-8')
-    print(data)
-    client.send("you are welcome".encode('utf-8'))
-    print('Well done!')
+    client.send(input().encode('utf-8'))
+
+    data = client.recv(1024)
+    print(f"Message: {data.decode('utf-8')}")
+
