@@ -24,12 +24,35 @@ class GenderError(Exception):
     pass
 
 
-def error_box(msg):
+def error_box(msg: str):
     error = QMessageBox()
     error.setWindowTitle('Ошибка')
     error.setText(msg)
     error.setIcon(QMessageBox.Warning)
     error.exec()
+
+
+def check_hard(pas: str):
+    num = '1234567890-_'
+    if pas == pas.upper():
+        return False
+    if pas == pas.lower():
+        return False
+    if len(pas) < 8:
+        return False
+    for i in pas:
+        if i in num:
+            return True
+    return False
+
+
+def check_symbol(word: str):
+    with open('Data/bad_symbols.txt') as symbols:
+        for i in symbols.readline():
+            if i in word:
+                return False
+        return True
+
 
 
 # класс Главного_Окна
