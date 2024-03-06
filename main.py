@@ -25,6 +25,10 @@ class GenderError(Exception):
     pass
 
 
+class ConnectError(Exception):
+    pass
+
+
 # error message
 def error_box(msg: str):
     error = QMessageBox()
@@ -85,6 +89,9 @@ class RegWidget(QMainWindow):
         super(RegWidget, self).__init__()
         uic.loadUi('Data/Ui_files/Registration.ui', self)
         self.show()
+        # windows
+        self.profile = None
+        # buttons
         self.registration.clicked.connect(self.registrate)
 
     # registration and open profile window
@@ -95,6 +102,10 @@ class RegWidget(QMainWindow):
             c_password = self.password1.text()
             if password != c_password:
                 raise PasswordError
+            if not check_hard(password):
+                raise HardError
+            if not check_symbol(password) or not check_symbol(name):
+                raise SymbolError
             if self.M_radio.isChecked():
                 gender = '1'
             elif self.F_radio.isChecked():
@@ -102,20 +113,48 @@ class RegWidget(QMainWindow):
             else:
                 raise GenderError
             # sending request on server
-            ans = request(f'r! {name}!{password}!{gender}')
-            if ans != '!Success':
-                error_box(ans[1:])
+            try:
+                ans = request(f'r! {name}!{password}!{gender}')
+                if ans != '!Success':
+                    error_box(ans[1:])
+            except Exception:
+                raise ConnectError
+            try:
+                self.profile = ProfileWidget()
+                self.profile.show()
+                self.close()
+            except Exception as e:
+                print(e)
+        except ConnectError:
+            error_box("Ошибка соединения с сервером")
         except PasswordError:
             error_box('Пароли не совпадают')
         except GenderError:
             error_box('Гендер не выбран')
         except SymbolError:
-            error_box('Использованы недопустимые символы')
+            error_box('''Использованы недопустимые символы:
+!,./?\|'":;(){}[]@#$%^&*~`№><=+''')
         except HardError:
-            error_box('Пароль слишком простой')
+            error_box('''Пароль слишком простой:
+1. Длина должна быть не менее 8 символов
+2. Пароль должен содержать заглавные и строчные символы
+3. Пароль должен содержать цифры, или "_", или "-"''')
         except Exception as e:
             error_box('Произошла непредвиденная ошибка')
             print(e)
+
+
+# profile window
+class ProfileWidget(QMainWindow):
+    # initialisation window
+    def __init__(self, username, avatar, dates):
+        super(ProfileWidget, self).__init__()
+        uic.loadUi('Data/Ui_files/Profile.ui', self)
+        self.show()
+        # user info
+        self.username = username
+        self.avatar = avatar
+        self.dates = dates
 
 
 # start
