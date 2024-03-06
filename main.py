@@ -120,11 +120,12 @@ class RegWidget(QMainWindow):
             except Exception:
                 raise ConnectError
             try:
-                self.profile = ProfileWidget()
+                user_data = request(f'!gai {name}').split(' ')[1].split('!')
+                self.profile = ProfileWidget(user_data[1], user_data[4], user_data[6])
                 self.profile.show()
                 self.close()
             except Exception as e:
-                print(e)
+                raise ConnectError
         except ConnectError:
             error_box("Ошибка соединения с сервером")
         except PasswordError:
