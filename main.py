@@ -10,8 +10,10 @@ client, address = server.accept()
 print('!client connected')
 
 while True:
-    client.send(input().encode('utf-8'))
-
     data = client.recv(1024)
     print(f"Message: {data.decode('utf-8')}")
+
+    client.send(input().encode('utf-8'))
+
+
 
