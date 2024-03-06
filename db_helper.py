@@ -1,10 +1,12 @@
 import sqlite3 as sql
 
 
+# error classes
 class UsernameError(Exception):
     pass
 
 
+# registration method
 def registration(username: str, password: str, gender: str):
     con = sql.connect('eedb.db')
     try:
