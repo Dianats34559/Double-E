@@ -161,6 +161,16 @@ border-top-left-radius</string>
                 </widget>
                </item>
                <item>
+                <widget class="QLineEdit" name="lineEdit">
+                 <property name="styleSheet">
+                  <string notr="true">color: rgb(213, 213, 213);</string>
+                 </property>
+                 <property name="text">
+                  <string>confirm the password</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
                 <layout class="QHBoxLayout" name="horizontalLayout_6">
                  <item>
                   <widget class="QRadioButton" name="radioButton">
