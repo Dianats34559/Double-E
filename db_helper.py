@@ -28,3 +28,19 @@ def registration(username: str, password: str, gender: str):
     finally:
         if con:
             con.close()
+
+
+def get_all_info(username):
+    con = sql.connect('eedb.db')
+    try:
+        cur = con.cursor()
+        info = cur.execute(f"""SELECT * FROM Users WHERE name = '{username}'""").fetchall()
+        cur.close()
+        con.close()
+        return f'!gai {"!".join(info)}'
+    except Exception as e:
+        print(e)
+        return "!DatabaseError"
+    finally:
+        if con:
+            con.close()

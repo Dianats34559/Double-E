@@ -1,5 +1,5 @@
 import socket
-from db_helper import registration
+from db_helper import *
 
 # creating server
 server = socket.create_server(('192.168.0.25', 8888))
@@ -13,7 +13,11 @@ while True:
     # getting request
     client_data = client.recv(1024).decode('utf-8')
     print(f"Message: {client_data}")
-    # sending answer
+    # sending result of registration
     if client_data.startswith('!r'):
         info = client_data.split(' ')[1].split('!')
         client.send(registration(*info).encode('utf-8'))
+    # sending all user's data
+    if client_data.startswith("!gai"):
+        username = client_data.split(' ')[1]
+        client.send(get_all_info(username).encode('utf-8'))
