@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>761</width>
-    <height>607</height>
+    <width>796</width>
+    <height>477</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -53,35 +53,7 @@
         <layout class="QHBoxLayout" name="horizontalLayout_4"/>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_3">
-         <item>
-          <widget class="QRadioButton" name="man">
-           <property name="text">
-            <string>М</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QRadioButton" name="woman">
-           <property name="text">
-            <string>Ж</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_4">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
+        <layout class="QHBoxLayout" name="horizontalLayout_3"/>
        </item>
        <item>
         <widget class="QLabel" name="label_3">
@@ -136,21 +108,9 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_4">
-        <property name="maximumSize">
-         <size>
-          <width>200</width>
-          <height>200</height>
-         </size>
-        </property>
+       <widget class="QPushButton" name="pushButton">
         <property name="text">
-         <string/>
-        </property>
-        <property name="pixmap">
-         <pixmap>no-profile.png</pixmap>
-        </property>
-        <property name="scaledContents">
-         <bool>true</bool>
+         <string>Изменить аватар</string>
         </property>
        </widget>
       </item>
@@ -164,7 +124,7 @@
      </layout>
     </item>
     <item>
-     <spacer name="horizontalSpacer_2">
+     <spacer name="horizontalSpacer_3">
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
@@ -183,7 +143,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>761</width>
+     <width>796</width>
      <height>26</height>
     </rect>
    </property>
@@ -196,6 +156,7 @@
     <addaction name="practise"/>
     <addaction name="game"/>
     <addaction name="meme"/>
+    <addaction name="action"/>
    </widget>
    <addaction name="menu"/>
   </widget>
@@ -223,6 +184,11 @@
   <action name="meme">
    <property name="text">
     <string>Мемы</string>
+   </property>
+  </action>
+  <action name="action">
+   <property name="text">
+    <string>Настройки</string>
    </property>
   </action>
  </widget>

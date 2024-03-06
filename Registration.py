@@ -153,3 +153,4 @@ class Ui_MainWindow(object):
         self.radioButton.setText(_translate("MainWindow", "М"))
         self.radioButton_2.setText(_translate("MainWindow", "Ж"))
         self.registration.setText(_translate("MainWindow", "Регистрация"))
+
