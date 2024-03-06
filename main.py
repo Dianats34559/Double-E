@@ -1,13 +1,14 @@
-# библиотеки
+# libraries
 import sys
-from PyQt5 import QtGui, QtCore, uic
+from PyQt5 import uic
 from PyQt5.QtWidgets import *
-from PyQt5.QtCore import Qt, QSize
-from screeninfo import get_monitors
+# from PyQt5.QtCore import Qt, QSize
+# from screeninfo import get_monitors
 
 from client import request
 
 
+# error classes
 class PasswordError(Exception):
     pass
 
@@ -24,6 +25,7 @@ class GenderError(Exception):
     pass
 
 
+# error message
 def error_box(msg):
     error = QMessageBox()
     error.setWindowTitle('Ошибка')
@@ -32,17 +34,19 @@ def error_box(msg):
     error.exec()
 
 
-# класс Главного_Окна
+# main window class
 class EnterWidget(QMainWindow):
-    # инициализация Главного_Окна
+    # initialisation window
     def __init__(self):
         super(EnterWidget, self).__init__()
         uic.loadUi('Data/Ui_files/Enter.ui', self)
         self.show()
+        # windows
         self.reg = None
-        # кнопки
+        # buttons
         self.registration.clicked.connect(self.go_registration)
 
+    # open registration window and close this
     def go_registration(self):
         try:
             self.reg = RegWidget()
@@ -52,13 +56,16 @@ class EnterWidget(QMainWindow):
             print(e)
 
 
+# registration window
 class RegWidget(QMainWindow):
+    # initialisation window
     def __init__(self):
         super(RegWidget, self).__init__()
         uic.loadUi('Data/Ui_files/Registration.ui', self)
         self.show()
         self.registration.clicked.connect(self.registrate)
 
+    # registration and open profile window
     def registrate(self):
         try:
             name = self.login.text()
@@ -72,6 +79,7 @@ class RegWidget(QMainWindow):
                 gender = '0'
             else:
                 raise GenderError
+            # sending request on server
             ans = request(f'r! {name}!{password}!{gender}')
             if ans != '!Success':
                 error_box(ans[1:])
@@ -88,7 +96,7 @@ class RegWidget(QMainWindow):
             print(e)
 
 
-# запуск
+# start
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     enter = EnterWidget()
