@@ -20,8 +20,10 @@ class EnterWidget(QMainWindow):
         self.show()
         # windows
         self.reg = None
-        # buttons
+        self.profile = None
+        # widgets
         self.registration.clicked.connect(self.go_registration)
+        self.enter.clicked.connect(self.go_profile)
 
     # open registration window and close this
     def go_registration(self):
@@ -30,6 +32,24 @@ class EnterWidget(QMainWindow):
             self.reg.show()
             self.close()
         except Exception as e:
+            print(e)
+
+    # open profile window and close this
+    def go_profile(self):
+        username = self.login.text()
+        password = self.password.text()
+        try:
+            # уязвимость пользовательских данных!
+            user_data = request(f'!gai {username}').split(' ')[1].split('!')
+            if password != user_data[2]:
+                raise LoginError
+            self.profile = ProfileWidget(user_data[1], user_data[4], user_data[6])
+            self.profile.show()
+            self.close()
+        except LoginError:
+            error_box('Не верный пароль')
+        except Exception as e:
+            error_box("Ошибка соединения с сервером")
             print(e)
 
 

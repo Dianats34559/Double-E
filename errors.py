@@ -17,3 +17,7 @@ class GenderError(Exception):
 
 class ConnectError(Exception):
     pass
+
+
+class LoginError(Exception):
+    pass
