@@ -1,63 +1,14 @@
 # libraries
 import sys
 from PyQt5 import uic
-from PyQt5.QtWidgets import *
 # from PyQt5.QtCore import Qt, QSize
 # from screeninfo import get_monitors
 
+
+# other py-files
 from client import request
-
-
-# error classes
-class PasswordError(Exception):
-    pass
-
-
-class SymbolError(Exception):
-    pass
-
-
-class HardError(Exception):
-    pass
-
-
-class GenderError(Exception):
-    pass
-
-
-class ConnectError(Exception):
-    pass
-
-
-# error message
-def error_box(msg: str):
-    error = QMessageBox()
-    error.setWindowTitle('Ошибка')
-    error.setText(msg)
-    error.setIcon(QMessageBox.Warning)
-    error.exec()
-
-
-def check_hard(pas: str):
-    num = '1234567890-_'
-    if pas == pas.upper():
-        return False
-    if pas == pas.lower():
-        return False
-    if len(pas) < 8:
-        return False
-    for i in pas:
-        if i in num:
-            return True
-    return False
-
-
-def check_symbol(word: str):
-    with open('Data/bad_symbols.txt') as symbols:
-        for i in symbols.readline():
-            if i in word:
-                return False
-        return True
+from methods import *
+from errors import *
 
 
 # main window class
@@ -117,7 +68,8 @@ class RegWidget(QMainWindow):
                 ans = request(f'r! {name}!{password}!{gender}')
                 if ans != '!Success':
                     error_box(ans[1:])
-            except Exception:
+            except Exception as e:
+                print(e)
                 raise ConnectError
             try:
                 user_data = request(f'!gai {name}').split(' ')[1].split('!')
@@ -125,6 +77,7 @@ class RegWidget(QMainWindow):
                 self.profile.show()
                 self.close()
             except Exception as e:
+                print(e)
                 raise ConnectError
         except ConnectError:
             error_box("Ошибка соединения с сервером")
@@ -156,6 +109,8 @@ class ProfileWidget(QMainWindow):
         self.username = username
         self.avatar = avatar
         self.dates = dates
+        # widgets
+        self.name.setText(self.username)
 
 
 # start
