@@ -214,6 +214,16 @@ background-color: rgb(225, 225, 225);</string>
              </widget>
             </item>
             <item>
+             <widget class="QPushButton" name="pushButton">
+              <property name="styleSheet">
+               <string notr="true">background-color: rgb(225, 225, 225);</string>
+              </property>
+              <property name="text">
+               <string>Выход</string>
+              </property>
+             </widget>
+            </item>
+            <item>
              <widget class="QFrame" name="frame_7">
               <property name="frameShape">
                <enum>QFrame::StyledPanel</enum>
