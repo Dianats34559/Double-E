@@ -37,7 +37,7 @@ def get_all_info(username):
         info = cur.execute(f"""SELECT * FROM Users WHERE name = '{username}'""").fetchall()
         cur.close()
         con.close()
-        return f'!gai {"!".join(info)}'
+        return f'!gai {"!".join(map(str, list(info[0])))}'
     except Exception as e:
         print(e)
         return "!DatabaseError"
