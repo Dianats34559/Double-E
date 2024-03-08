@@ -87,14 +87,14 @@ class RegWidget(QMainWindow):
             # sending request on server
             try:
                 ans = request(f'r! {name}!{password}!{gender}')
+                print(ans)
                 if ans != '!Success':
                     error_box(ans[1:])
             except Exception as e:
                 print(e)
                 raise ConnectError
             try:
-                user_data = request(f'!gai {name}').split(' ')[1].split('!')
-                self.profile = ProfileWidget(user_data[1], user_data[4], user_data[6])
+                self.profile = ProfileWidget(name, 'None', '0')
                 self.profile.show()
                 self.close()
             except Exception as e:
