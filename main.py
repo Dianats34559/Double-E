@@ -40,8 +40,9 @@ class EnterWidget(QMainWindow):
         password = self.password.text()
         try:
             # уязвимость пользовательских данных!
-            user_data = request(f'!gai {username}').split(' ')[1].split('!')
-            if password != user_data[2]:
+            usr_data = request(f'!gai {username}')
+            user_data = usr_data.split(' ')[1].split('!')
+            if password != user_data[3]:
                 raise LoginError
             self.profile = ProfileWidget(user_data[1], user_data[4], user_data[6])
             self.profile.show()
