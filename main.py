@@ -193,6 +193,16 @@ class ProfileWidget(QMainWindow):
         self.model = TableModel(data)
         self.progress_table.setModel(self.model)
 
+    def exit(self):
+        try:
+            with open('Data/save_last_enter.txt', 'w') as ent:
+                ent.write('')
+            self.enter = EnterWidget()
+            self.enter.show()
+            self.close()
+        except Exception as e:
+            print(e)
+
 
 # start
 if __name__ == '__main__':
