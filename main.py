@@ -86,7 +86,7 @@ class RegWidget(QMainWindow):
                 raise GenderError
             # sending request on server
             try:
-                ans = request(f'r! {name}!{password}!{gender}')
+                ans = request(f'!r {name}!{password}!{gender}')
                 print(ans)
                 if ans != '!Success':
                     error_box(ans[1:])
@@ -94,7 +94,9 @@ class RegWidget(QMainWindow):
                 print(e)
                 raise ConnectError
             try:
-                self.profile = ProfileWidget(name, 'None', '0')
+                usr_data = request(f'!gai {name}')
+                user_data = usr_data.split(' ')[1].split('!')
+                self.profile = ProfileWidget(user_data[1], user_data[4], user_data[6])
                 self.profile.show()
                 self.close()
             except Exception as e:
