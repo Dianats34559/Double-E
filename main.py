@@ -204,6 +204,7 @@ class ProfileWidget(QMainWindow):
         except Exception as e:
             print(e)
 
+    # open practice window and close this
     def go_practice(self):
         try:
             self.practice = PracticeWidget()
@@ -212,8 +213,10 @@ class ProfileWidget(QMainWindow):
         except Exception as e:
             print(e)
 
+    # exit from profile to enter window
     def exit(self):
         try:
+            # clear saves
             with open('Data/save_last_enter.txt', 'w') as ent:
                 ent.write('')
             self.enter = EnterWidget()
