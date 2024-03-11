@@ -183,7 +183,7 @@ class ProfileWidget(QMainWindow):
         # widgets
         self.name.setText(self.username)
         self.theory.clicked.connect(self.go_theory)
-
+        self.practice.clicked.connect(self.go_practice)
         # progress table
         data = pd.DataFrame([
             [None, None, None],
@@ -204,6 +204,24 @@ class ProfileWidget(QMainWindow):
         except Exception as e:
             print(e)
 
+    def go_practice(self):
+        try:
+            self.practice = PracticeWidget()
+            self.practice.show()
+            self.close()
+        except Exception as e:
+            print(e)
+
+    def exit(self):
+        try:
+            with open('Data/save_last_enter.txt', 'w') as ent:
+                ent.write('')
+            self.enter = EnterWidget()
+            self.enter.show()
+            self.close()
+        except Exception as e:
+            print(e)
+
 
 # theory window
 class TheoryWidget(QMainWindow):
@@ -211,6 +229,14 @@ class TheoryWidget(QMainWindow):
     def __init__(self):
         super(TheoryWidget, self).__init__()
         uic.loadUi('Data/Ui_files/Theory.ui', self)
+
+
+# Practice Window
+class PracticeWidget(QMainWindow):
+    # installation window
+    def __init__(self):
+        super(PracticeWidget, self).__init__()
+        uic.loadUi('Data/Ui_files/Practice.ui', self)
 
 
 # start
