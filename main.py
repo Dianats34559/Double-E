@@ -182,6 +182,7 @@ class ProfileWidget(QMainWindow):
         self.dates = dates
         # widgets
         self.name.setText(self.username)
+        self.practice.clicked.connect(self.go_practice)
         # progress table
         data = pd.DataFrame([
             [1, 9, 2],
@@ -193,6 +194,14 @@ class ProfileWidget(QMainWindow):
         self.model = TableModel(data)
         self.progress_table.setModel(self.model)
 
+    def go_practice(self):
+        try:
+            self.practice = PracticeWidget()
+            self.practice.show()
+            self.close()
+        except Exception as e:
+            print(e)
+
     def exit(self):
         try:
             with open('Data/save_last_enter.txt', 'w') as ent:
@@ -202,6 +211,14 @@ class ProfileWidget(QMainWindow):
             self.close()
         except Exception as e:
             print(e)
+
+
+# Practice Window
+class PracticeWidget(QMainWindow):
+    # installation window
+    def __init__(self):
+        super(PracticeWidget, self).__init__()
+        uic.loadUi('Data/Ui_files/Practice.ui', self)
 
 
 # start

@@ -172,7 +172,7 @@
     </property>
     <addaction name="profile"/>
     <addaction name="theory"/>
-    <addaction name="practise"/>
+    <addaction name="practice"/>
     <addaction name="game"/>
     <addaction name="meme"/>
     <addaction name="settings"/>
