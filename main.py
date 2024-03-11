@@ -182,16 +182,35 @@ class ProfileWidget(QMainWindow):
         self.dates = dates
         # widgets
         self.name.setText(self.username)
+        self.theory.clicked.connect(self.go_theory)
+
         # progress table
         data = pd.DataFrame([
-            [1, 9, 2],
-            [1, 0, -1],
-            [3, 5, 2],
-            [3, 3, 2],
-            [5, 8, 9],
+            [None, None, None],
+            [None, None, None],
+            [None, None, None],
+            [None, None, None],
+            [None, None, None],
         ], columns=['Date', 'Theme', 'Progress'], index=list(range(1, 6)))
         self.model = TableModel(data)
         self.progress_table.setModel(self.model)
+
+    # open theory window and close this
+    def go_theory(self):
+        try:
+            self.theo = TheoryWidget()
+            self.theo.show()
+            self.close()
+        except Exception as e:
+            print(e)
+
+
+# theory window
+class TheoryWidget(QMainWindow):
+    # initialisation window
+    def __init__(self):
+        super(TheoryWidget, self).__init__()
+        uic.loadUi('Data/Ui_files/Theory.ui', self)
 
 
 # start
