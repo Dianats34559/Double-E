@@ -16,15 +16,28 @@ class EnterWidget(QMainWindow):
     # initialisation window
     def __init__(self):
         super(EnterWidget, self).__init__()
-        uic.loadUi('Data/Ui_files/Enter.ui', self)
-        self.show()
-        # windows
-        self.reg = None
-        self.profile = None
-        # widgets
-        self.registration.clicked.connect(self.go_registration)
-        self.enter.clicked.connect(self.go_profile)
-        self.server_config.clicked.connect(self.change_server_ip)
+        # try to fast enter
+        try:
+            with open('Data/save_last_enter.txt', 'r') as data:
+                info = data.readline().split('!')
+                usr_data = request(f'!gai {info[0]}')
+                user_data = usr_data.split(' ')[1].split('!')
+                if info[3] != user_data[3]:
+                    raise LoginError
+                self.profile = ProfileWidget(info[0], info[1], info[2])
+                self.profile.show()
+                self.close()
+        except Exception as e:
+            print(e)
+            uic.loadUi('Data/Ui_files/Enter.ui', self)
+            self.show()
+            # windows
+            self.reg = None
+            self.profile = None
+            # widgets
+            self.registration.clicked.connect(self.go_registration)
+            self.enter.clicked.connect(self.go_profile)
+            self.server_config.clicked.connect(self.change_server_ip)
 
     # open registration window and close this
     def go_registration(self):
@@ -47,6 +60,8 @@ class EnterWidget(QMainWindow):
                 raise LoginError
             self.profile = ProfileWidget(user_data[1], user_data[4], user_data[6])
             self.profile.show()
+            with open('Data/save_last_enter.txt', 'w') as data:
+                data.write(f'{user_data[1]}!{user_data[4]}!{user_data[6]}!{password}')
             self.close()
         except LoginError:
             error_box('Не верный пароль')
@@ -114,6 +129,8 @@ class RegWidget(QMainWindow):
                 user_data = usr_data.split(' ')[1].split('!')
                 self.profile = ProfileWidget(user_data[1], user_data[4], user_data[6])
                 self.profile.show()
+                with open('Data/save_last_enter.txt', 'w') as data:
+                    data.write(f'{user_data[1]}!{user_data[4]}!{user_data[6]}!{password}')
                 self.close()
             except Exception as e:
                 print(e)
