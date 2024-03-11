@@ -8,6 +8,7 @@ class UsernameError(Exception):
 
 # registration method
 def registration(username: str, password: str, gender: str):
+    print('!r method is working...')
     con = sql.connect('eedb.db')
     try:
         cur = con.cursor()
@@ -19,10 +20,13 @@ def registration(username: str, password: str, gender: str):
         con.commit()
         cur.close()
         con.close()
+        print('!Success')
         return "!Success"
     except UsernameError:
+        print('!Error')
         return "!UsernameError"
     except Exception as e:
+        print('!Error')
         print(e)
         return "!DatabaseError"
     finally:
@@ -31,14 +35,17 @@ def registration(username: str, password: str, gender: str):
 
 
 def get_all_info(username):
+    print("!gai method is working...")
     con = sql.connect('eedb.db')
     try:
         cur = con.cursor()
         info = cur.execute(f"""SELECT * FROM Users WHERE name = '{username}'""").fetchall()
         cur.close()
         con.close()
+        print('!Success')
         return f'!gai {"!".join(map(str, list(info[0])))}'
     except Exception as e:
+        print('!Error')
         print(e)
         return "!DatabaseError"
     finally:

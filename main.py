@@ -2,7 +2,7 @@ import socket
 from db_helper import *
 
 # creating server
-server = socket.create_server(('192.168.0.25', 8888))
+server = socket.create_server(('192.168.0.100', 8888))
 
 while True:
     # connection
