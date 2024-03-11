@@ -200,6 +200,13 @@ background-color: rgb(225, 225, 225);
              </widget>
             </item>
             <item>
+             <widget class="QPushButton" name="server_config">
+              <property name="text">
+               <string>Изменить ip сервера</string>
+              </property>
+             </widget>
+            </item>
+            <item>
              <widget class="QFrame" name="frame_7">
               <property name="frameShape">
                <enum>QFrame::StyledPanel</enum>

@@ -24,6 +24,7 @@ class EnterWidget(QMainWindow):
         # widgets
         self.registration.clicked.connect(self.go_registration)
         self.enter.clicked.connect(self.go_profile)
+        self.server_config.clicked.connect(self.change_server_ip)
 
     # open registration window and close this
     def go_registration(self):
@@ -51,6 +52,21 @@ class EnterWidget(QMainWindow):
             error_box('Не верный пароль')
         except Exception as e:
             error_box("Ошибка соединения с сервером")
+            print(e)
+
+    # use method when server ip has changed
+    def change_server_ip(self):
+        try:
+            ip, okPressed = QInputDialog.getText(self, "IP-адрес сервера",
+                                                 "Введите IP-адрес своего сервера:",
+                                                 QLineEdit.Normal, "")
+            if okPressed and ip != '':
+                if ip.count('.') != 3 or len(list(filter(lambda x: 0 <= int(x) < 256, ip.split('.')))) != 4:
+                    error_box('Невозможный ip-адрес')
+                else:
+                    with open('Data/server_ip', 'w') as server:
+                        server.write(ip)
+        except Exception as e:
             print(e)
 
 
