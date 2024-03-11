@@ -1,7 +1,8 @@
 # libraries
 import sys
-from PyQt5 import uic
-# from PyQt5.QtCore import Qt, QSize
+import pandas as pd
+from PyQt5 import uic, QtCore
+from PyQt5.QtCore import Qt
 # from screeninfo import get_monitors
 
 
@@ -9,6 +10,33 @@ from PyQt5 import uic
 from client import request
 from methods import *
 from errors import *
+
+
+# progress table model
+class TableModel(QtCore.QAbstractTableModel):
+
+    def __init__(self, data):
+        super(TableModel, self).__init__()
+        self._data = data
+
+    def data(self, index, role):
+        if role == Qt.DisplayRole:
+            value = self._data.iloc[index.row(), index.column()]
+            return str(value)
+
+    def rowCount(self, index):
+        return self._data.shape[0]
+
+    def columnCount(self, index):
+        return self._data.shape[1]
+
+    def headerData(self, section, orientation, role):
+        # section is the index of the column/row.
+        if role == Qt.DisplayRole:
+            if orientation == Qt.Horizontal:
+                return str(self._data.columns[section])
+            if orientation == Qt.Vertical:
+                return str(self._data.index[section])
 
 
 # main window class
@@ -154,6 +182,16 @@ class ProfileWidget(QMainWindow):
         self.dates = dates
         # widgets
         self.name.setText(self.username)
+        # progress table
+        data = pd.DataFrame([
+            [1, 9, 2],
+            [1, 0, -1],
+            [3, 5, 2],
+            [3, 3, 2],
+            [5, 8, 9],
+        ], columns=['Date', 'Theme', 'Progress'], index=list(range(1, 6)))
+        self.model = TableModel(data)
+        self.progress_table.setModel(self.model)
 
 
 # start
