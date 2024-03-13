@@ -176,7 +176,7 @@
     <addaction name="game"/>
     <addaction name="meme"/>
     <addaction name="settings"/>
-    <addaction name="action_2"/>
+    <addaction name="exit"/>
    </widget>
    <addaction name="menu"/>
   </widget>
@@ -211,7 +211,7 @@
     <string>Настройки</string>
    </property>
   </action>
-  <action name="action_2">
+  <action name="exit">
    <property name="text">
     <string>Выход</string>
    </property>

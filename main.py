@@ -184,6 +184,8 @@ class ProfileWidget(QMainWindow):
         self.name.setText(self.username)
         self.theory.triggered.connect(self.go_theory)
         self.practice.triggered.connect(self.go_practice)
+        self.settings.triggered.connect(self.go_settings)
+        self.exit.triggered.connect(self.go_enter)
         # progress table
         data = pd.DataFrame([
             [None, None, None],
@@ -213,8 +215,12 @@ class ProfileWidget(QMainWindow):
         except Exception as e:
             print(f'Profile widget: go_theory: {e}')
 
+    # open settings window and close this
+    def go_settings(self):
+        pass
+
     # exit from profile to enter window
-    def exit(self):
+    def go_enter(self):
         try:
             # clear saves
             with open('Data/save_last_enter.txt', 'w') as ent:
