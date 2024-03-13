@@ -61,7 +61,7 @@ class EnterWidget(QMainWindow):
             self.reg.show()
             self.close()
         except Exception as e:
-            print(e)
+            print(f'Enter widget: go_registration: {e}')
 
     # open profile window and close this
     def go_profile(self):
@@ -82,7 +82,7 @@ class EnterWidget(QMainWindow):
             error_box('Не верный пароль')
         except Exception as e:
             error_box("Ошибка соединения с сервером")
-            print(e)
+            print(f'Enter widget: go_profile: {e}')
 
     # use method when server ip has changed
     def change_server_ip(self):
@@ -97,7 +97,7 @@ class EnterWidget(QMainWindow):
                     with open('Data/server_ip', 'w') as server:
                         server.write(ip)
         except Exception as e:
-            print(e)
+            print(f'Enter widget: change_server_ip: {e}')
 
 
 # registration window
@@ -137,7 +137,7 @@ class RegWidget(QMainWindow):
                 if ans != '!Success':
                     error_box(ans[1:])
             except Exception as e:
-                print(e)
+                print(f'Reg widget: registrate (registrate): {e}')
                 raise ConnectError
             try:
                 usr_data = request(f'!gai {name}')
@@ -148,7 +148,7 @@ class RegWidget(QMainWindow):
                     data.write(f'{user_data[1]}!{user_data[4]}!{user_data[6]}!{password}')
                 self.close()
             except Exception as e:
-                print(e)
+                print(f'Reg widget: registrate (enter): {e}')
                 raise ConnectError
         except ConnectError:
             error_box("Ошибка соединения с сервером")
@@ -166,7 +166,7 @@ class RegWidget(QMainWindow):
 3. Пароль должен содержать цифры, или "_", или "-"''')
         except Exception as e:
             error_box('Произошла непредвиденная ошибка')
-            print(e)
+            print(f'Reg widget: registrate: {e}')
 
 
 # profile window
@@ -182,8 +182,8 @@ class ProfileWidget(QMainWindow):
         self.dates = dates
         # widgets
         self.name.setText(self.username)
-        self.theory.clicked.connect(self.go_theory)
-        self.practice.clicked.connect(self.go_practice)
+        self.theory.triggered.connect(self.go_theory)
+        self.practice.triggered.connect(self.go_practice)
         # progress table
         data = pd.DataFrame([
             [None, None, None],
@@ -202,16 +202,16 @@ class ProfileWidget(QMainWindow):
             self.theo.show()
             self.close()
         except Exception as e:
-            print(e)
+            print(f'Profile widget: go_theory: {e}')
 
     # open practice window and close this
     def go_practice(self):
         try:
-            self.practice = PracticeWidget()
-            self.practice.show()
+            self.prac = PracticeWidget()
+            self.prac.show()
             self.close()
         except Exception as e:
-            print(e)
+            print(f'Profile widget: go_theory: {e}')
 
     # exit from profile to enter window
     def exit(self):
@@ -223,7 +223,7 @@ class ProfileWidget(QMainWindow):
             self.enter.show()
             self.close()
         except Exception as e:
-            print(e)
+            print(f'Profile widget: exit: {e}')
 
 
 # theory window
@@ -255,8 +255,10 @@ if __name__ == '__main__':
                 raise LoginError
             profile = ProfileWidget(info[0], info[1], info[2])
             profile.show()
+    except LoginError:
+        print('Wrong password saved')
     except Exception as e:
-        print(e)
+        print(f'Start: {e}')
         enter = EnterWidget()
         enter.show()
     sys.exit(app.exec_())

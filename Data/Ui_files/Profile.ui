@@ -191,7 +191,7 @@
     <string>Теория</string>
    </property>
   </action>
-  <action name="practise">
+  <action name="practice">
    <property name="text">
     <string>Практика</string>
    </property>
