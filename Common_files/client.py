@@ -5,7 +5,7 @@ import socket
 def request(req: str):
     # connection
     client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    with open('Data/server_ip', 'r') as ip:
+    with open('../Data/server_ip', 'r') as ip:
         client.connect((ip.readline(), 8888))
         print('!connected')
         # sending request

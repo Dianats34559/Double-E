@@ -30,7 +30,7 @@ def check_hard(pas: str):
 
 # danger symbol check
 def check_symbol(word: str):
-    with open('Data/bad_symbols.txt') as symbols:
+    with open('../Data/bad_symbols.txt') as symbols:
         for i in symbols.readline():
             if i in word:
                 return False
