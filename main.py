@@ -176,6 +176,11 @@ class ProfileWidget(QMainWindow):
         super(ProfileWidget, self).__init__()
         uic.loadUi('Data/Ui_files/Profile.ui', self)
         self.show()
+        # windows
+        self.prac = None
+        self.theo = None
+        self.enter = None
+        self.sett = None
         # user info
         self.username = username
         self.avatar = avatar
@@ -217,7 +222,12 @@ class ProfileWidget(QMainWindow):
 
     # open settings window and close this
     def go_settings(self):
-        pass
+        try:
+            self.sett = SettingsWidget()
+            self.sett.show()
+            self.close()
+        except Exception as e:
+            print(f'Profile widget: go_settings: {e}')
 
     # exit from profile to enter window
     def go_enter(self):
@@ -246,6 +256,14 @@ class PracticeWidget(QMainWindow):
     def __init__(self):
         super(PracticeWidget, self).__init__()
         uic.loadUi('Data/Ui_files/Practice.ui', self)
+
+
+# Settings Window
+class SettingsWidget(QMainWindow):
+    # initialisation window
+    def __init__(self):
+        super(SettingsWidget, self).__init__()
+        uic.loadUi('Data/Ui_files/Settings.ui', self)
 
 
 # start
