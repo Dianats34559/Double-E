@@ -214,7 +214,7 @@ background-color: rgb(225, 225, 225);</string>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton">
+             <widget class="QPushButton" name="exit">
               <property name="styleSheet">
                <string notr="true">background-color: rgb(225, 225, 225);</string>
               </property>
