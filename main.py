@@ -21,3 +21,7 @@ while True:
     if client_data.startswith("!gai"):
         username = client_data.split(' ')[1]
         client.send(get_all_info(username).encode('utf-8'))
+    # updating image
+    if client_data.startswith("!ui"):
+        username, img = client_data.split(' ')[1].split('!')
+        client.send(update_image(username, img).encode('utf-8'))

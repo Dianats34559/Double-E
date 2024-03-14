@@ -51,3 +51,23 @@ def get_all_info(username):
     finally:
         if con:
             con.close()
+
+
+def update_image(username, image):
+    print('!ui method is working...')
+    con = sql.connect('eedb.db')
+    try:
+        cur = con.cursor()
+        cur.execute(f"""UPDATE Users SET avatar = {image} WHERE name = {username}""")
+        con.commit()
+        cur.close()
+        con.close()
+        print("!Success")
+        return '!Success'
+    except Exception as e:
+        print('!Error')
+        print(e)
+        return "!DatabaseError"
+    finally:
+        if con:
+            con.close()
