@@ -1,7 +1,7 @@
 # libraries
 import sys
 import pandas as pd
-from PyQt5 import uic, QtCore
+from PyQt5 import uic, QtCore, QtGui
 from PyQt5.QtCore import Qt
 
 
@@ -197,6 +197,7 @@ class ProfileWidget(QMainWindow):
         self.dates = dates
         # widgets
         self.name.setText(self.username)
+        self.change_avatar.clicked.connect(self.change_photo)
         self.theory.triggered.connect(self.go_theory)
         self.practice.triggered.connect(self.go_practice)
         self.settings.triggered.connect(self.go_settings)
@@ -211,7 +212,9 @@ class ProfileWidget(QMainWindow):
             print(f'Profile widget: table: {e}')
         # avatar image
         try:
-            pass
+            if self.avatar is not None:
+                image_from_binary(self.avatar)
+                self.photo.setPixmap(QtGui.QPixmap('Data/Images/avatar.jpg'))
         except Exception as e:
             print(f'Profile widget: avatar: {e}')
 
@@ -253,6 +256,21 @@ class ProfileWidget(QMainWindow):
             self.close()
         except Exception as e:
             print(f'Profile widget: exit: {e}')
+
+    # change photo
+    def change_photo(self):
+        try:
+            avatar_d = QFileDialog.getOpenFileName(self, "Open file", 'C:',
+                                                   'JPG File (*.jpg);;PNG File (*.png)')
+            ava = Image.open(avatar_d[0])
+            ava.save('Data/Images/avatar.jpg')
+            new_avatar = self.image_toSize('Data/Images/avatar.jpg', 300)
+            new_avatar.save('Data/Images/avatar.jpg')
+            bin_img = self.image_toBinary('Data/Images/avatar.jpg')
+            request(f'!ui {self.username}!{bin_img}')
+            self.Profile_photo_img.setPixmap(QtGui.QPixmap('Data/Images/avatar.jpg'))
+        except Exception as e:
+            print(f'Profile widget: change_photo: {e}')
 
 
 # theory window
