@@ -66,19 +66,6 @@
           <item>
            <widget class="QTextBrowser" name="textBrowser">
             <property name="html">
-             <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;Основные понятия&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;Функция&lt;/span&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt; - это зависимость &amp;quot;у&amp;quot; от &amp;quot;х&amp;quot;, при которой &amp;quot;х&amp;quot; является переменной  или аргументом функций, а &amp;quot;у&amp;quot; - зависимой переменной или значением функции.&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Задать функцию означает определить правило, в соответствии с которым каждому значению аргумента соответствует единственное значение функции. Вот какими способами можно ее задать:&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt; font-weight:600;&quot;&gt;. &lt;/span&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Табличный способ. помогает быстро определить конкретные значения без дополнительныхизмерений и вычислений.&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt; font-weight:600;&quot;&gt;. &lt;/span&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Графический способ: наглядно.&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt; font-weight:600;&quot;&gt;. &lt;/span&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Аналитический способ, через формулы. Компактно и можно посчитать функцию при произвольном значении аргумента из области определения. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:11pt; font-weight:600;&quot;&gt;. &lt;/span&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Словесный способ.&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;График функции &lt;/span&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;- это объединение всех точек координатной плоскости, когда вместо &amp;quot;х&amp;quot; можно подставить в функцию произвольные значения и найти координаты этих точек.&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:8pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
            </widget>
           </item>
@@ -120,10 +107,7 @@ p, li { white-space: pre-wrap; }
      <string>Меню</string>
     </property>
     <addaction name="profile"/>
-    <addaction name="theory"/>
     <addaction name="practise"/>
-    <addaction name="game"/>
-    <addaction name="meme"/>
    </widget>
    <widget class="QMenu" name="menu_2">
     <property name="title">
@@ -139,24 +123,9 @@ p, li { white-space: pre-wrap; }
     <string>Профиль</string>
    </property>
   </action>
-  <action name="theory">
-   <property name="text">
-    <string>Теория</string>
-   </property>
-  </action>
   <action name="practise">
    <property name="text">
     <string>Практика</string>
-   </property>
-  </action>
-  <action name="game">
-   <property name="text">
-    <string>Игры</string>
-   </property>
-  </action>
-  <action name="meme">
-   <property name="text">
-    <string>Мемы</string>
    </property>
   </action>
   <action name="function">
