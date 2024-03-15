@@ -1,7 +1,7 @@
 # libraries
 import sys
 import pandas as pd
-from PyQt5 import uic, QtCore
+from PyQt5 import uic, QtCore, QtGui
 from PyQt5.QtCore import Qt
 
 
@@ -11,7 +11,7 @@ from methods import *
 from errors import *
 
 
-# progress table model
+# progress table model (done)
 class TableModel(QtCore.QAbstractTableModel):
 
     def __init__(self, data):
@@ -179,7 +179,7 @@ class RegWidget(QMainWindow):
             print(f'Reg widget widget: exit: {e}')
 
 
-# profile window
+# profile window (done)
 class ProfileWidget(QMainWindow):
     # initialisation window
     def __init__(self, username, avatar, dates):
@@ -197,6 +197,7 @@ class ProfileWidget(QMainWindow):
         self.dates = dates
         # widgets
         self.name.setText(self.username)
+        self.change_avatar.clicked.connect(self.change_photo)
         self.theory.triggered.connect(self.go_theory)
         self.practice.triggered.connect(self.go_practice)
         self.settings.triggered.connect(self.go_settings)
@@ -211,7 +212,9 @@ class ProfileWidget(QMainWindow):
             print(f'Profile widget: table: {e}')
         # avatar image
         try:
-            pass
+            if self.avatar is not None:
+                image_from_binary(self.avatar)
+                self.photo.setPixmap(QtGui.QPixmap('Data/Images/avatar.jpg'))
         except Exception as e:
             print(f'Profile widget: avatar: {e}')
 
@@ -254,6 +257,21 @@ class ProfileWidget(QMainWindow):
         except Exception as e:
             print(f'Profile widget: exit: {e}')
 
+    # change photo
+    def change_photo(self):
+        try:
+            avatar_d = QFileDialog.getOpenFileName(self, "Open file", 'C:',
+                                                   'JPG File (*.jpg);;PNG File (*.png)')
+            ava = Image.open(avatar_d[0])
+            ava.save('Data/Images/avatar.jpg')
+            new_avatar = self.image_toSize('Data/Images/avatar.jpg', 300)
+            new_avatar.save('Data/Images/avatar.jpg')
+            bin_img = self.image_toBinary('Data/Images/avatar.jpg')
+            request(f'!ui {self.username}!{bin_img}')
+            self.Profile_photo_img.setPixmap(QtGui.QPixmap('Data/Images/avatar.jpg'))
+        except Exception as e:
+            print(f'Profile widget: change_photo: {e}')
+
 
 # theory window
 class TheoryWidget(QMainWindow):
@@ -261,6 +279,40 @@ class TheoryWidget(QMainWindow):
     def __init__(self):
         super(TheoryWidget, self).__init__()
         uic.loadUi('Data/Ui_files/Theory.ui', self)
+        # windows
+        self.prof = None
+        self.prac = None
+        # buttons
+        self.profile.triggered.connect(self.go_profile)
+        self.practice.triggered.connect(self.go_practice)
+
+    def go_profile(self):
+        try:
+            with open('Data/save_last_enter.txt', 'r') as data:
+                inf = data.readline().split('!')
+                u_data = request(f'!gai {inf[0]}')
+                us_data = u_data.split(' ')[1].split('!')
+                if inf[3] != us_data[3]:
+                    raise LoginError
+                prof = ProfileWidget(inf[0], inf[1], inf[2])
+                prof.show()
+        except LoginError:
+            error_box('Произошла ошибка, попробуйте войти заново')
+            print('Wrong password saved')
+            ent = EnterWidget()
+            ent.show()
+        except Exception as e:
+            print(f'Theory widget: go_profile: {e}')
+            ent = EnterWidget()
+            ent.show()
+
+    def go_practice(self):
+        try:
+            self.prac = PracticeWidget()
+            self.prac.show()
+            self.close()
+        except Exception as e:
+            print(f'Theory widget: go_practice: {e}')
 
 
 # Practice Window
@@ -269,6 +321,40 @@ class PracticeWidget(QMainWindow):
     def __init__(self):
         super(PracticeWidget, self).__init__()
         uic.loadUi('Data/Ui_files/Practice.ui', self)
+        # windows
+        self.prof = None
+        self.theo = None
+        # buttons
+        self.profile.triggered.connect(self.go_profile)
+        self.practice.triggered.connect(self.go_theory)
+
+    def go_profile(self):
+        try:
+            with open('Data/save_last_enter.txt', 'r') as data:
+                inf = data.readline().split('!')
+                u_data = request(f'!gai {inf[0]}')
+                us_data = u_data.split(' ')[1].split('!')
+                if inf[3] != us_data[3]:
+                    raise LoginError
+                prof = ProfileWidget(inf[0], inf[1], inf[2])
+                prof.show()
+        except LoginError:
+            error_box('Произошла ошибка, попробуйте войти заново')
+            print('Wrong password saved')
+            ent = EnterWidget()
+            ent.show()
+        except Exception as e:
+            print(f'Practice widget: go_profile: {e}')
+            ent = EnterWidget()
+            ent.show()
+
+    def go_practice(self):
+        try:
+            self.theo = TheoryWidget()
+            self.theo.show()
+            self.close()
+        except Exception as e:
+            print(f'Practice widget: go_practice: {e}')
 
 
 # Settings Window (done)
