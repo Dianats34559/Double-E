@@ -42,7 +42,7 @@
          <property name="geometry">
           <rect>
            <x>0</x>
-           <y>-594</y>
+           <y>0</y>
            <width>490</width>
            <height>1155</height>
           </rect>
@@ -173,10 +173,10 @@ p, li { white-space: pre-wrap; }
    <widget class="QMenu" name="menu">
     <property name="geometry">
      <rect>
-      <x>353</x>
-      <y>211</y>
+      <x>270</x>
+      <y>153</y>
       <width>159</width>
-      <height>174</height>
+      <height>102</height>
      </rect>
     </property>
     <property name="sizePolicy">
@@ -190,9 +190,6 @@ p, li { white-space: pre-wrap; }
     </property>
     <addaction name="profile"/>
     <addaction name="theory"/>
-    <addaction name="practice"/>
-    <addaction name="game"/>
-    <addaction name="action_5"/>
    </widget>
    <widget class="QMenu" name="menu_2">
     <property name="title">

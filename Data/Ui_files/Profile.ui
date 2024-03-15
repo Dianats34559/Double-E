@@ -77,8 +77,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>129</width>
-            <height>148</height>
+            <width>278</width>
+            <height>214</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -173,9 +173,6 @@
     <addaction name="profile"/>
     <addaction name="theory"/>
     <addaction name="practice"/>
-    <addaction name="game"/>
-    <addaction name="meme"/>
-    <addaction name="settings"/>
     <addaction name="exit"/>
    </widget>
    <addaction name="menu"/>

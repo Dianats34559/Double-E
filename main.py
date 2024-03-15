@@ -65,14 +65,13 @@ class EnterWidget(QMainWindow):
         password = self.password.text()
         try:
             # уязвимость пользовательских данных!
-            usr_data = request(f'!gai {username}')
-            user_data = usr_data.split(' ')[1].split('!')
+            user_data = request(f'!gai {username}').split(' ')[1].split('!')
             if password != user_data[3]:
                 raise LoginError
-            self.profile = ProfileWidget(user_data[1], user_data[4], user_data[6])
-            self.profile.show()
             with open('Data/save_last_enter.txt', 'w') as data:
-                data.write(f'{user_data[1]}!{user_data[4]}!{user_data[6]}!{password}')
+                data.write('!'.join(user_data))
+            self.profile = ProfileWidget()
+            self.profile.show()
             self.close()
         except LoginError:
             error_box('Не верный пароль')
@@ -135,12 +134,11 @@ class RegWidget(QMainWindow):
                 print(f'Reg widget: registrate (registrate): {e}')
                 raise ConnectError
             try:
-                usr_data = request(f'!gai {name}')
-                user_data = usr_data.split(' ')[1].split('!')
-                self.profile = ProfileWidget(user_data[1], user_data[4], user_data[6])
-                self.profile.show()
+                user_data = request(f'!gai {name}').split(' ')[1].split('!')
                 with open('Data/save_last_enter.txt', 'w') as data:
-                    data.write(f'{user_data[1]}!{user_data[4]}!{user_data[6]}!{password}')
+                    data.write('!'.join(user_data))
+                self.profile = ProfileWidget()
+                self.profile.show()
                 self.close()
             except Exception as e:
                 print(f'Reg widget: registrate (enter): {e}')
@@ -176,15 +174,17 @@ class RegWidget(QMainWindow):
 # profile window (done)
 class ProfileWidget(QMainWindow):
     # initialisation window
-    def __init__(self, username, avatar, dates):
+    def __init__(self):
         super(ProfileWidget, self).__init__()
         uic.loadUi('Data/Ui_files/Profile.ui', self)
         self.show()
         # user info
         try:
-            self.username = username
-            self.avatar = avatar
-            self.dates = dates
+            with open('Data/save_last_enter.txt') as uinfo:
+                u = uinfo.readline().split('!')
+                self.username = u[1]
+                self.avatar = u[4]
+                self.dates = u[6]
         except Exception as e:
             print(f'Profile widget: user: {e}')
         # widgets
@@ -267,29 +267,17 @@ class TheoryWidget(QMainWindow):
         # buttons
         self.profile.triggered.connect(self.go_profile)
         self.practice.triggered.connect(self.go_practice)
-        self.textBrowser.setHtml('')
+        self.textBrowser.setHtml()
 
     def go_profile(self):
         try:
-            with open('Data/save_last_enter.txt', 'r') as data:
-                inf = data.readline().split('!')
-                u_data = request(f'!gai {inf[0]}')
-                us_data = u_data.split(' ')[1].split('!')
-                if inf[3] != us_data[3]:
-                    raise LoginError
-                prof = ProfileWidget(inf[0], inf[1], inf[2])
-                prof.show()
-                self.close()
-        except LoginError:
-            error_box('Произошла ошибка, попробуйте войти заново')
-            print('Wrong password saved')
-            ent = EnterWidget()
-            ent.show()
+            self.prof = ProfileWidget()
+            self.prof.show()
             self.close()
         except Exception as e:
             print(f'Theory widget: go_profile: {e}')
-            ent = EnterWidget()
-            ent.show()
+            self.ent = EnterWidget()
+            self.ent.show()
             self.close()
 
     def go_practice(self):
@@ -309,32 +297,23 @@ class PracticeWidget(QMainWindow):
         uic.loadUi('Data/Ui_files/Practice.ui', self)
         # buttons
         self.profile.triggered.connect(self.go_profile)
-        self.practice.triggered.connect(self.go_theory)
+        self.theory.triggered.connect(self.go_theory)
 
     def go_profile(self):
         try:
-            with open('Data/save_last_enter.txt', 'r') as data:
-                inf = data.readline().split('!')
-                u_data = request(f'!gai {inf[0]}')
-                us_data = u_data.split(' ')[1].split('!')
-                if inf[3] != us_data[3]:
-                    raise LoginError
-                prof = ProfileWidget(inf[0], inf[1], inf[2])
-                prof.show()
-        except LoginError:
-            error_box('Произошла ошибка, попробуйте войти заново')
-            print('Wrong password saved')
-            ent = EnterWidget()
-            ent.show()
+            self.prof = ProfileWidget()
+            self.prof.show()
+            self.close()
         except Exception as e:
             print(f'Practice widget: go_profile: {e}')
-            ent = EnterWidget()
-            ent.show()
+            self.ent = EnterWidget()
+            self.ent.show()
+            self.close()
 
     def go_theory(self):
         try:
-            self.theo = TheoryWidget()
-            self.theo.show()
+            self.theory = TheoryWidget()
+            self.theory.show()
             self.close()
         except Exception as e:
             print(f'Practice widget: go_practice: {e}')
@@ -347,16 +326,12 @@ if __name__ == '__main__':
     try:
         with open('Data/save_last_enter.txt', 'r') as data:
             info = data.readline().split('!')
-            usr_data = request(f'!gai {info[0]}')
+            usr_data = request(f'!gai {info[1]}')
             user_data = usr_data.split(' ')[1].split('!')
             if info[3] != user_data[3]:
                 raise LoginError
-            profile = ProfileWidget(info[0], info[1], info[2])
+            profile = ProfileWidget()
             profile.show()
-    except LoginError:
-        print('Wrong password saved')
-        enter = EnterWidget()
-        enter.show()
     except Exception as e:
         print(f'Start: {e}')
         enter = EnterWidget()
