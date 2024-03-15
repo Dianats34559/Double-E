@@ -298,13 +298,13 @@ class SettingsWidget(QMainWindow):
     def go_profile(self):
         try:
             with open('Data/save_last_enter.txt', 'r') as data:
-                inf = data.readline().split('!')
-                u_data = request(f'!gai {inf[0]}')
-                us_data = u_data.split(' ')[1].split('!')
-                if inf[3] != us_data[3]:
+                info = data.readline().split('!')
+                usr_data = request(f'!gai {info[0]}')
+                user_data = usr_data.split(' ')[1].split('!')
+                if info[3] != user_data[3]:
                     raise LoginError
-                prof = ProfileWidget(inf[0], inf[1], inf[2])
-                prof.show()
+                profile = ProfileWidget(info[0], info[1], info[2])
+                profile.show()
         except LoginError:
             error_box('Произошла ошибка, попробуйте войти заново')
             print('Wrong password saved')
