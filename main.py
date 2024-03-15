@@ -198,8 +198,8 @@ class ProfileWidget(QMainWindow):
             print(f'Profile widget: widgets: {e}')
         # progress table
         try:
-            data = pd.DataFrame(list(map(lambda x: x.split('!'), self.dates.split('?'))),
-                                columns=['Date', 'Theme', 'Progress'], index=list(range(1, 6)))
+            d = list(map(lambda x: x.split('!'), self.dates.split('?')))
+            data = pd.DataFrame(d, columns=['Date', 'Theme', 'Progress'], index=list(range(1, len(d) + 1)))
             self.model = TableModel(data)
             self.progress_table.setModel(self.model)
         except Exception as e:
