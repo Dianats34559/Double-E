@@ -195,6 +195,10 @@ p, li { white-space: pre-wrap; }
     <property name="title">
      <string>Темы</string>
     </property>
+    <addaction name="probability"/>
+    <addaction name="planimetry"/>
+    <addaction name="movement"/>
+    <addaction name="work"/>
    </widget>
    <addaction name="menu"/>
    <addaction name="menu_2"/>
@@ -222,6 +226,26 @@ p, li { white-space: pre-wrap; }
   <action name="action_5">
    <property name="text">
     <string>Мемы</string>
+   </property>
+  </action>
+  <action name="probability">
+   <property name="text">
+    <string>Теория вероятности</string>
+   </property>
+  </action>
+  <action name="planimetry">
+   <property name="text">
+    <string>Планиметрия</string>
+   </property>
+  </action>
+  <action name="movement">
+   <property name="text">
+    <string>Задачи на движение</string>
+   </property>
+  </action>
+  <action name="work">
+   <property name="text">
+    <string>Задачи на работу</string>
    </property>
   </action>
  </widget>
