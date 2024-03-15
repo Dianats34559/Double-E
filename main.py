@@ -300,6 +300,20 @@ class PracticeWidget(QMainWindow):
         # buttons
         self.profile.triggered.connect(self.go_profile)
         self.theory.triggered.connect(self.go_theory)
+        self.probability.triggered.connect(self.get_probability)
+        self.planimetry.triggered.connect(self.get_planimetry)
+        self.movement.triggered.connect(self.get_movement)
+        self.work.triggered.connect(self.get_work)
+        with codecs.open(u'Data/Practice/Probability/Pr_1.html', 'r', 'utf-8') as html:
+            self.textBrowser.setHtml(''.join(html.readlines()))
+        with codecs.open(u'Data/Practice/Probability/Pr_2.html', 'r', 'utf-8') as html:
+            self.textBrowser_2.setHtml(''.join(html.readlines()))
+        with codecs.open(u'Data/Practice/Probability/Pr_3.html', 'r', 'utf-8') as html:
+            self.textBrowser_3.setHtml(''.join(html.readlines()))
+        with codecs.open(u'Data/Practice/Probability/Pr_4.html', 'r', 'utf-8') as html:
+            self.textBrowser_4.setHtml(''.join(html.readlines()))
+        with codecs.open(u'Data/Practice/Probability/Pr_5.html', 'r', 'utf-8') as html:
+            self.textBrowser_5.setHtml(''.join(html.readlines()))
 
     def go_profile(self):
         try:
@@ -319,6 +333,54 @@ class PracticeWidget(QMainWindow):
             self.close()
         except Exception as e:
             print(f'Practice widget: go_practice: {e}')
+
+    def get_probability(self):
+        with codecs.open(u'Data/Practice/Probability/Pr_1.html', 'r', 'utf-8') as html:
+            self.textBrowser.setHtml(''.join(html.readlines()))
+        with codecs.open(u'Data/Practice/Probability/Pr_2.html', 'r', 'utf-8') as html:
+            self.textBrowser_2.setHtml(''.join(html.readlines()))
+        with codecs.open(u'Data/Practice/Probability/Pr_3.html', 'r', 'utf-8') as html:
+            self.textBrowser_3.setHtml(''.join(html.readlines()))
+        with codecs.open(u'Data/Practice/Probability/Pr_4.html', 'r', 'utf-8') as html:
+            self.textBrowser_4.setHtml(''.join(html.readlines()))
+        with codecs.open(u'Data/Practice/Probability/Pr_5.html', 'r', 'utf-8') as html:
+            self.textBrowser_5.setHtml(''.join(html.readlines()))
+
+    def get_planimetry(self):
+        with codecs.open(u'Data/Practice/Planimetry/Pl_1.html', 'r', 'utf-8') as html:
+            self.textBrowser.setHtml(''.join(html.readlines()))
+        with codecs.open(u'Data/Practice/Planimetry/Pl_2.html', 'r', 'utf-8') as html:
+            self.textBrowser_2.setHtml(''.join(html.readlines()))
+        with codecs.open(u'Data/Practice/Planimetry/Pl_3.html', 'r', 'utf-8') as html:
+            self.textBrowser_3.setHtml(''.join(html.readlines()))
+        with codecs.open(u'Data/Practice/Planimetry/Pl_4.html', 'r', 'utf-8') as html:
+            self.textBrowser_4.setHtml(''.join(html.readlines()))
+        with codecs.open(u'Data/Practice/Planimetry/Pl_5.html', 'r', 'utf-8') as html:
+            self.textBrowser_5.setHtml(''.join(html.readlines()))
+
+    def get_movement(self):
+        with codecs.open(u'Data/Practice/Tasks for movement/T_1.html', 'r', 'utf-8') as html:
+            self.textBrowser.setHtml(''.join(html.readlines()))
+        with codecs.open(u'Data/Practice/Tasks for movement/T_2.html', 'r', 'utf-8') as html:
+            self.textBrowser_2.setHtml(''.join(html.readlines()))
+        with codecs.open(u'Data/Practice/Tasks for movement/T_3.html', 'r', 'utf-8') as html:
+            self.textBrowser_3.setHtml(''.join(html.readlines()))
+        with codecs.open(u'Data/Practice/Tasks for movement/T_4.html', 'r', 'utf-8') as html:
+            self.textBrowser_4.setHtml(''.join(html.readlines()))
+        with codecs.open(u'Data/Practice/Tasks for movement/T_5.html', 'r', 'utf-8') as html:
+            self.textBrowser_5.setHtml(''.join(html.readlines()))
+
+    def get_work(self):
+        with codecs.open(u'Data/Practice/Work/W_1.html', 'r', 'utf-8') as html:
+            self.textBrowser.setHtml(''.join(html.readlines()))
+        with codecs.open(u'Data/Practice/Work/W_2.html', 'r', 'utf-8') as html:
+            self.textBrowser_2.setHtml(''.join(html.readlines()))
+        with codecs.open(u'Data/Practice/Work/W_3.html', 'r', 'utf-8') as html:
+            self.textBrowser_3.setHtml(''.join(html.readlines()))
+        with codecs.open(u'Data/Practice/Work/W_4.html', 'r', 'utf-8') as html:
+            self.textBrowser_4.setHtml(''.join(html.readlines()))
+        with codecs.open(u'Data/Practice/Work/W_5.html', 'r', 'utf-8') as html:
+            self.textBrowser_5.setHtml(''.join(html.readlines()))
 
 
 # start
