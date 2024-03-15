@@ -1,6 +1,7 @@
 # libraries
 import sys
 import pandas as pd
+import codecs
 from PyQt5 import uic, QtCore, QtGui
 from PyQt5.QtCore import Qt
 
@@ -267,7 +268,8 @@ class TheoryWidget(QMainWindow):
         # buttons
         self.profile.triggered.connect(self.go_profile)
         self.practice.triggered.connect(self.go_practice)
-        self.textBrowser.setHtml()
+        with codecs.open(u'Data/Theory/Probability.html', 'r', 'utf-8') as html:
+            self.textBrowser.setHtml(''.join(html.readlines()))
 
     def go_profile(self):
         try:
