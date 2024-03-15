@@ -126,7 +126,7 @@ p, li { white-space: pre-wrap; }
     <property name="title">
      <string>Темы</string>
     </property>
-    <addaction name="function"/>
+    <addaction name="probability"/>
    </widget>
    <addaction name="menu"/>
    <addaction name="menu_2"/>
@@ -156,7 +156,7 @@ p, li { white-space: pre-wrap; }
     <string>Мемы</string>
    </property>
   </action>
-  <action name="function">
+  <action name="probability">
    <property name="text">
     <string>Функция</string>
    </property>

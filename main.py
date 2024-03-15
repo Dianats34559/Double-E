@@ -268,6 +268,7 @@ class TheoryWidget(QMainWindow):
         # buttons
         self.profile.triggered.connect(self.go_profile)
         self.practice.triggered.connect(self.go_practice)
+        self.probability.triggered.connect(self.get_probability)
         with codecs.open(u'Data/Theory/Probability.html', 'r', 'utf-8') as html:
             self.textBrowser.setHtml(''.join(html.readlines()))
 
@@ -289,6 +290,10 @@ class TheoryWidget(QMainWindow):
             self.close()
         except Exception as e:
             print(f'Theory widget: go_practice: {e}')
+
+    def get_probability(self):
+        with codecs.open(u'Data/Theory/Probability.html', 'r', 'utf-8') as html:
+            self.textBrowser.setHtml(''.join(html.readlines()))
 
 
 # Practice Window
