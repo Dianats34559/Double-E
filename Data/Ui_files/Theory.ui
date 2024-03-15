@@ -120,10 +120,7 @@ p, li { white-space: pre-wrap; }
      <string>Меню</string>
     </property>
     <addaction name="profile"/>
-    <addaction name="theory"/>
     <addaction name="practice"/>
-    <addaction name="game"/>
-    <addaction name="meme"/>
    </widget>
    <widget class="QMenu" name="menu_2">
     <property name="title">
