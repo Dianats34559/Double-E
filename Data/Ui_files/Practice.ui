@@ -63,7 +63,12 @@
              </size>
             </property>
             <property name="html">
-             </property>
+             <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
            </widget>
           </item>
           <item>
@@ -82,7 +87,12 @@
              </sizepolicy>
             </property>
             <property name="html">
-             </property>
+             <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
            </widget>
           </item>
           <item>
@@ -180,6 +190,9 @@
     </property>
     <addaction name="profile"/>
     <addaction name="theory"/>
+    <addaction name="practice"/>
+    <addaction name="game"/>
+    <addaction name="action_5"/>
    </widget>
    <widget class="QMenu" name="menu_2">
     <property name="title">
@@ -197,6 +210,21 @@
   <action name="theory">
    <property name="text">
     <string>Теория</string>
+   </property>
+  </action>
+  <action name="practice">
+   <property name="text">
+    <string>Практика</string>
+   </property>
+  </action>
+  <action name="game">
+   <property name="text">
+    <string>Игры</string>
+   </property>
+  </action>
+  <action name="action_5">
+   <property name="text">
+    <string>Мемы</string>
    </property>
   </action>
  </widget>

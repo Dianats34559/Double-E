@@ -45,9 +45,6 @@ class EnterWidget(QMainWindow):
         super(EnterWidget, self).__init__()
         uic.loadUi('Data/Ui_files/Enter.ui', self)
         self.show()
-        # windows
-        self.reg = None
-        self.profile = None
         # widgets
         self.registration.clicked.connect(self.go_registration)
         self.enter.clicked.connect(self.go_profile)
@@ -106,9 +103,6 @@ class RegWidget(QMainWindow):
         super(RegWidget, self).__init__()
         uic.loadUi('Data/Ui_files/Registration.ui', self)
         self.show()
-        # windows
-        self.profile = None
-        self.enter = None
         # buttons
         self.registration.clicked.connect(self.registrate)
         self.exit.clicked.connect(self.go_enter)
@@ -186,22 +180,22 @@ class ProfileWidget(QMainWindow):
         super(ProfileWidget, self).__init__()
         uic.loadUi('Data/Ui_files/Profile.ui', self)
         self.show()
-        # windows
-        self.prac = None
-        self.theo = None
-        self.enter = None
-        self.sett = None
         # user info
-        self.username = username
-        self.avatar = avatar
-        self.dates = dates
+        try:
+            self.username = username
+            self.avatar = avatar
+            self.dates = dates
+        except Exception as e:
+            print(f'Profile widget: user: {e}')
         # widgets
-        self.name.setText(self.username)
-        self.change_avatar.clicked.connect(self.change_photo)
-        self.theory.triggered.connect(self.go_theory)
-        self.practice.triggered.connect(self.go_practice)
-        self.settings.triggered.connect(self.go_settings)
-        self.exit.triggered.connect(self.go_enter)
+        try:
+            self.name.setText(self.username)
+            self.change_avatar.clicked.connect(self.change_photo)
+            self.theory.triggered.connect(self.go_theory)
+            self.practice.triggered.connect(self.go_practice)
+            self.exit.triggered.connect(self.go_enter)
+        except Exception as e:
+            print(f'Profile widget: widgets: {e}')
         # progress table
         try:
             data = pd.DataFrame(list(map(lambda x: x.split('!'), self.dates.split('?'))),
@@ -236,15 +230,6 @@ class ProfileWidget(QMainWindow):
         except Exception as e:
             print(f'Profile widget: go_theory: {e}')
 
-    # open settings window and close this
-    def go_settings(self):
-        try:
-            self.sett = SettingsWidget()
-            self.sett.show()
-            self.close()
-        except Exception as e:
-            print(f'Profile widget: go_settings: {e}')
-
     # exit from profile to enter window
     def go_enter(self):
         try:
@@ -264,11 +249,11 @@ class ProfileWidget(QMainWindow):
                                                    'JPG File (*.jpg);;PNG File (*.png)')
             ava = Image.open(avatar_d[0])
             ava.save('Data/Images/avatar.jpg')
-            new_avatar = self.image_toSize('Data/Images/avatar.jpg', 300)
+            new_avatar = image_to_size('Data/Images/avatar.jpg', 300)
             new_avatar.save('Data/Images/avatar.jpg')
-            bin_img = self.image_toBinary('Data/Images/avatar.jpg')
+            bin_img = image_to_binary('Data/Images/avatar.jpg')
             request(f'!ui {self.username}!{bin_img}')
-            self.Profile_photo_img.setPixmap(QtGui.QPixmap('Data/Images/avatar.jpg'))
+            self.photo.setPixmap(QtGui.QPixmap('Data/Images/avatar.jpg'))
         except Exception as e:
             print(f'Profile widget: change_photo: {e}')
 
@@ -279,12 +264,10 @@ class TheoryWidget(QMainWindow):
     def __init__(self):
         super(TheoryWidget, self).__init__()
         uic.loadUi('Data/Ui_files/Theory.ui', self)
-        # windows
-        self.prof = None
-        self.prac = None
         # buttons
         self.profile.triggered.connect(self.go_profile)
         self.practice.triggered.connect(self.go_practice)
+        self.textBrowser.setHtml('')
 
     def go_profile(self):
         try:
@@ -296,15 +279,18 @@ class TheoryWidget(QMainWindow):
                     raise LoginError
                 prof = ProfileWidget(inf[0], inf[1], inf[2])
                 prof.show()
+                self.close()
         except LoginError:
             error_box('Произошла ошибка, попробуйте войти заново')
             print('Wrong password saved')
             ent = EnterWidget()
             ent.show()
+            self.close()
         except Exception as e:
             print(f'Theory widget: go_profile: {e}')
             ent = EnterWidget()
             ent.show()
+            self.close()
 
     def go_practice(self):
         try:
@@ -321,9 +307,6 @@ class PracticeWidget(QMainWindow):
     def __init__(self):
         super(PracticeWidget, self).__init__()
         uic.loadUi('Data/Ui_files/Practice.ui', self)
-        # windows
-        self.prof = None
-        self.theo = None
         # buttons
         self.profile.triggered.connect(self.go_profile)
         self.practice.triggered.connect(self.go_theory)
@@ -348,59 +331,13 @@ class PracticeWidget(QMainWindow):
             ent = EnterWidget()
             ent.show()
 
-    def go_practice(self):
+    def go_theory(self):
         try:
             self.theo = TheoryWidget()
             self.theo.show()
             self.close()
         except Exception as e:
             print(f'Practice widget: go_practice: {e}')
-
-
-# Settings Window (done)
-class SettingsWidget(QMainWindow):
-    # initialisation window
-    def __init__(self):
-        super(SettingsWidget, self).__init__()
-        uic.loadUi('Data/Ui_files/Settings.ui', self)
-        # buttons
-        self.save.clicked.connect(self.change_server_ip)
-        self.profile.triggered.connect(self.go_profile)
-
-    # use method when server ip has changed
-    def change_server_ip(self):
-        try:
-            ip = self.ip.text()
-            if ip != '':
-                if ip.count('.') != 3 or len(list(filter(lambda x: 0 <= int(x) < 256, ip.split('.')))) != 4:
-                    error_box('Невозможный ip-адрес')
-                else:
-                    with open('Data/server_ip', 'w') as server:
-                        server.write(ip)
-        except Exception as e:
-            print(f'Enter widget: change_server_ip: {e}')
-
-    # open profile window and close this
-    def go_profile(self):
-        try:
-            with open('Data/save_last_enter.txt', 'r') as data:
-                info = data.readline().split('!')
-                usr_data = request(f'!gai {info[0]}')
-                user_data = usr_data.split(' ')[1].split('!')
-                if info[3] != user_data[3]:
-                    raise LoginError
-                profile = ProfileWidget(info[0], info[1], info[2])
-                profile.show()
-        except LoginError:
-            error_box('Произошла ошибка, попробуйте войти заново')
-            print('Wrong password saved')
-            ent = EnterWidget()
-            ent.show()
-        except Exception as e:
-            error_box('Произошла ошибка, попробуйте войти заново')
-            print(f'Settings: go_profile: {e}')
-            ent = EnterWidget()
-            ent.show()
 
 
 # start
