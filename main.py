@@ -2,7 +2,7 @@ import socket
 from db_helper import *
 
 # creating server
-server = socket.create_server(('192.168.0.100', 8888))
+server = socket.create_server(('192.168.135.100', 8888))
 
 while True:
     # connection
@@ -25,3 +25,7 @@ while True:
     if client_data.startswith("!ui"):
         username, img = client_data.split(' ')[1].split('!')
         client.send(update_image(username, img).encode('utf-8'))
+    # updating progress
+    if client_data.startswith("!up"):
+        username, dates = client_data.split(' ')[1].split('!')
+        client.send(update_progress(username, dates).encode('utf-8'))
