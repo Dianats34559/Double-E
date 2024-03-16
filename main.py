@@ -259,7 +259,7 @@ class ProfileWidget(QMainWindow):
             print(f'Profile widget: change_photo: {e}')
 
 
-# theory window
+# theory window (done)
 class TheoryWidget(QMainWindow):
     # initialisation window
     def __init__(self):
@@ -303,12 +303,18 @@ class PracticeWidget(QMainWindow):
         super(PracticeWidget, self).__init__()
         uic.loadUi('Data/Ui_files/Practice.ui', self)
         # buttons
+        self.save1.clicked.connect(self.check1)
+        self.save2.clicked.connect(self.check2)
+        self.save3.clicked.connect(self.check3)
+        self.save4.clicked.connect(self.check4)
+        self.save5.clicked.connect(self.check5)
         self.profile.triggered.connect(self.go_profile)
         self.theory.triggered.connect(self.go_theory)
         self.probability.triggered.connect(self.get_probability)
         self.planimetry.triggered.connect(self.get_planimetry)
         self.movement.triggered.connect(self.get_movement)
         self.work.triggered.connect(self.get_work)
+        self.choose = 'Probability'
         with codecs.open(u'Data/Practice/Probability/Pr_1.html', 'r', 'utf-8') as html:
             self.textBrowser.setHtml(''.join(html.readlines()))
         with codecs.open(u'Data/Practice/Probability/Pr_2.html', 'r', 'utf-8') as html:
@@ -340,6 +346,7 @@ class PracticeWidget(QMainWindow):
             print(f'Practice widget: go_practice: {e}')
 
     def get_probability(self):
+        self.choose = 'Probability'
         with codecs.open(u'Data/Practice/Probability/Pr_1.html', 'r', 'utf-8') as html:
             self.textBrowser.setHtml(''.join(html.readlines()))
         with codecs.open(u'Data/Practice/Probability/Pr_2.html', 'r', 'utf-8') as html:
@@ -352,6 +359,7 @@ class PracticeWidget(QMainWindow):
             self.textBrowser_5.setHtml(''.join(html.readlines()))
 
     def get_planimetry(self):
+        self.choose = 'Planimetry'
         with codecs.open(u'Data/Practice/Planimetry/Pl_1.html', 'r', 'utf-8') as html:
             self.textBrowser.setHtml(''.join(html.readlines()))
         with codecs.open(u'Data/Practice/Planimetry/Pl_2.html', 'r', 'utf-8') as html:
@@ -364,6 +372,7 @@ class PracticeWidget(QMainWindow):
             self.textBrowser_5.setHtml(''.join(html.readlines()))
 
     def get_movement(self):
+        self.choose = 'Tasks for movement'
         with codecs.open(u'Data/Practice/Tasks for movement/T_1.html', 'r', 'utf-8') as html:
             self.textBrowser.setHtml(''.join(html.readlines()))
         with codecs.open(u'Data/Practice/Tasks for movement/T_2.html', 'r', 'utf-8') as html:
@@ -376,6 +385,7 @@ class PracticeWidget(QMainWindow):
             self.textBrowser_5.setHtml(''.join(html.readlines()))
 
     def get_work(self):
+        self.choose = 'Work'
         with codecs.open(u'Data/Practice/Work/W_1.html', 'r', 'utf-8') as html:
             self.textBrowser.setHtml(''.join(html.readlines()))
         with codecs.open(u'Data/Practice/Work/W_2.html', 'r', 'utf-8') as html:
@@ -386,6 +396,139 @@ class PracticeWidget(QMainWindow):
             self.textBrowser_4.setHtml(''.join(html.readlines()))
         with codecs.open(u'Data/Practice/Work/W_5.html', 'r', 'utf-8') as html:
             self.textBrowser_5.setHtml(''.join(html.readlines()))
+
+    def check1(self):
+        try:
+            if self.choose == 'Probability':
+                with open('Data/Practice/Probability/Pr_1.txt', 'r') as ans:
+                    if self.answer1.text() in ans.readline().split('!'):
+                        self.answer1.setStyleSheet('background-color: rgb(0, 255, 0);')
+                    else:
+                        self.answer1.setStyleSheet('background-color: rgb(255, 0, 0);')
+            elif self.choose == 'Planimetry':
+                with open('Data/Practice/Planimetry/Pl_1.txt', 'r') as ans:
+                    if self.answer1.text() in ans.readline().split('!'):
+                        self.answer1.setStyleSheet('background-color: rgb(0, 255, 0);')
+                    else:
+                        self.answer1.setStyleSheet('background-color: rgb(255, 0, 0);')
+            elif self.choose == 'Tasks for movement':
+                with open('Data/Practice/Tasks for movement/T_1.txt', 'r') as ans:
+                    if self.answer1.text() in ans.readline().split('!'):
+                        self.answer1.setStyleSheet('background-color: rgb(0, 255, 0);')
+                    else:
+                        self.answer1.setStyleSheet('background-color: rgb(255, 0, 0);')
+            elif self.choose == 'Work':
+                with open('Data/Practice/Work/W_1.txt', 'r') as ans:
+                    if self.answer1.text() in ans.readline().split('!'):
+                        self.answer1.setStyleSheet('background-color: rgb(0, 255, 0);')
+                    else:
+                        self.answer1.setStyleSheet('background-color: rgb(255, 0, 0);')
+        except Exception as e:
+            print(e)
+
+    def check2(self):
+        if self.choose == 'Probability':
+            with open('Data/Practice/Probability/Pr_2.txt', 'r') as ans:
+                if self.answer2.text() in ans.readline().split('!'):
+                    self.answer2.setStyleSheet('background-color: rgb(0, 255, 0);')
+                else:
+                    self.answer2.setStyleSheet('background-color: rgb(255, 0, 0);')
+        elif self.choose == 'Planimetry':
+            with open('Data/Practice/Planimetry/Pl_2.txt', 'r') as ans:
+                if self.answer2.text() in ans.readline().split('!'):
+                    self.answer2.setStyleSheet('background-color: rgb(0, 255, 0);')
+                else:
+                    self.answer2.setStyleSheet('background-color: rgb(255, 0, 0);')
+        elif self.choose == 'Tasks for movement':
+            with open('Data/Practice/Tasks for movement/T_2.txt', 'r') as ans:
+                if self.answer2.text() in ans.readline().split('!'):
+                    self.answer2.setStyleSheet('background-color: rgb(0, 255, 0);')
+                else:
+                    self.answer2.setStyleSheet('background-color: rgb(255, 0, 0);')
+        elif self.choose == 'Work':
+            with open('Data/Practice/Work/W_2.txt', 'r') as ans:
+                if self.answer2.text() in ans.readline().split('!'):
+                    self.answer2.setStyleSheet('background-color: rgb(0, 255, 0);')
+                else:
+                    self.answer2.setStyleSheet('background-color: rgb(255, 0, 0);')
+
+    def check3(self):
+        if self.choose == 'Probability':
+            with open('Data/Practice/Probability/Pr_3.txt', 'r') as ans:
+                if self.answer3.text() in ans.readline().split('!'):
+                    self.answer3.setStyleSheet('background-color: rgb(0, 255, 0);')
+                else:
+                    self.answer3.setStyleSheet('background-color: rgb(255, 0, 0);')
+        elif self.choose == 'Planimetry':
+            with open('Data/Practice/Planimetry/Pl_3.txt', 'r') as ans:
+                if self.answer3.text() in ans.readline().split('!'):
+                    self.answer3.setStyleSheet('background-color: rgb(0, 255, 0);')
+                else:
+                    self.answer3.setStyleSheet('background-color: rgb(255, 0, 0);')
+        elif self.choose == 'Tasks for movement':
+            with open('Data/Practice/Tasks for movement/T_3.txt', 'r') as ans:
+                if self.answer3.text() in ans.readline().split('!'):
+                    self.answer3.setStyleSheet('background-color: rgb(0, 255, 0);')
+                else:
+                    self.answer3.setStyleSheet('background-color: rgb(255, 0, 0);')
+        elif self.choose == 'Work':
+            with open('Data/Practice/Work/W_3.txt', 'r') as ans:
+                if self.answer3.text() in ans.readline().split('!'):
+                    self.answer3.setStyleSheet('background-color: rgb(0, 255, 0);')
+                else:
+                    self.answer3.setStyleSheet('background-color: rgb(255, 0, 0);')
+
+    def check4(self):
+        if self.choose == 'Probability':
+            with open('Data/Practice/Probability/Pr_4.txt', 'r') as ans:
+                if self.answer4.text() in ans.readline().split('!'):
+                    self.answer4.setStyleSheet('background-color: rgb(0, 255, 0);')
+                else:
+                    self.answer4.setStyleSheet('background-color: rgb(255, 0, 0);')
+        elif self.choose == 'Planimetry':
+            with open('Data/Practice/Planimetry/Pl_4.txt', 'r') as ans:
+                if self.answer4.text() in ans.readline().split('!'):
+                    self.answer4.setStyleSheet('background-color: rgb(0, 255, 0);')
+                else:
+                    self.answer4.setStyleSheet('background-color: rgb(255, 0, 0);')
+        elif self.choose == 'Tasks for movement':
+            with open('Data/Practice/Tasks for movement/T_4.txt', 'r') as ans:
+                if self.answer4.text() in ans.readline().split('!'):
+                    self.answer4.setStyleSheet('background-color: rgb(0, 255, 0);')
+                else:
+                    self.answer4.setStyleSheet('background-color: rgb(255, 0, 0);')
+        elif self.choose == 'Work':
+            with open('Data/Practice/Work/W_4.txt', 'r') as ans:
+                if self.answer4.text() in ans.readline().split('!'):
+                    self.answer4.setStyleSheet('background-color: rgb(0, 255, 0);')
+                else:
+                    self.answer4.setStyleSheet('background-color: rgb(255, 0, 0);')
+
+    def check5(self):
+        if self.choose == 'Probability':
+            with open('Data/Practice/Probability/Pr_5.txt', 'r') as ans:
+                if self.answer5.text() in ans.readline().split('!'):
+                    self.answer5.setStyleSheet('background-color: rgb(0, 255, 0);')
+                else:
+                    self.answer5.setStyleSheet('background-color: rgb(255, 0, 0);')
+        elif self.choose == 'Planimetry':
+            with open('Data/Practice/Planimetry/Pl_5.txt', 'r') as ans:
+                if self.answer5.text() in ans.readline().split('!'):
+                    self.answer5.setStyleSheet('background-color: rgb(0, 255, 0);')
+                else:
+                    self.answer5.setStyleSheet('background-color: rgb(255, 0, 0);')
+        elif self.choose == 'Tasks for movement':
+            with open('Data/Practice/Tasks for movement/T_5.txt', 'r') as ans:
+                if self.answer5.text() in ans.readline().split('!'):
+                    self.answer5.setStyleSheet('background-color: rgb(0, 255, 0);')
+                else:
+                    self.answer5.setStyleSheet('background-color: rgb(255, 0, 0);')
+        elif self.choose == 'Work':
+            with open('Data/Practice/Work/W_5.txt', 'r') as ans:
+                if self.answer5.text() in ans.readline().split('!'):
+                    self.answer5.setStyleSheet('background-color: rgb(0, 255, 0);')
+                else:
+                    self.answer5.setStyleSheet('background-color: rgb(255, 0, 0);')
 
 
 # start
