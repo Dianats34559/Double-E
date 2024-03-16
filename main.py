@@ -2,6 +2,7 @@
 import sys
 import pandas as pd
 import codecs
+import datetime as dt
 from PyQt5 import uic, QtCore, QtGui
 from PyQt5.QtCore import Qt
 
@@ -191,7 +192,7 @@ class ProfileWidget(QMainWindow):
         # widgets
         try:
             self.name.setText(self.username)
-            self.change_avatar.clicked.connect(self.change_photo)
+            # self.change_avatar.clicked.connect(self.change_photo)
             self.theory.triggered.connect(self.go_theory)
             self.practice.triggered.connect(self.go_practice)
             self.exit.triggered.connect(self.go_enter)
@@ -199,7 +200,7 @@ class ProfileWidget(QMainWindow):
             print(f'Profile widget: widgets: {e}')
         # progress table
         try:
-            d = list(map(lambda x: x.split('!'), self.dates.split('?')))
+            d = list(map(lambda x: x.split('$'), self.dates.split('&')))
             data = pd.DataFrame(d, columns=['Date', 'Theme', 'Progress'], index=list(range(1, len(d) + 1)))
             self.model = TableModel(data)
             self.progress_table.setModel(self.model)
@@ -413,24 +414,88 @@ class PracticeWidget(QMainWindow):
                 with open('Data/Practice/Probability/Pr_1.txt', 'r') as ans:
                     if self.answer1.text() in ans.readline().split('!'):
                         self.answer1.setStyleSheet('background-color: rgb(0, 255, 0);')
+                        try:
+                            addiction = ''
+                            dat = ''
+                            with open('Data/save_last_enter.txt', 'r') as f:
+                                inf = f.readline()
+                                if inf.split('!')[6]:
+                                    dat += '&'
+                                dat += f'{dt.datetime.now()}$Теория вероятности$Задание 1'
+                                addiction += inf + dat
+                            with open('Data/save_last_enter.txt', 'w') as f:
+                                f.write(addiction)
+                            a = request(f'!up {addiction.split("!")[1]}!{addiction.split("!")[6]}')
+                            if a != '!Success':
+                                error_box(f'Не удалось сохранить результат: {a}')
+                        except Exception as e:
+                            print(f'Updating data error: {e}')
                     else:
                         self.answer1.setStyleSheet('background-color: rgb(255, 0, 0);')
             elif self.choose == 'Planimetry':
                 with open('Data/Practice/Planimetry/Pl_1.txt', 'r') as ans:
                     if self.answer1.text() in ans.readline().split('!'):
                         self.answer1.setStyleSheet('background-color: rgb(0, 255, 0);')
+                        try:
+                            addiction = ''
+                            dat = ''
+                            with open('Data/save_last_enter.txt', 'r') as f:
+                                inf = f.readline()
+                                if inf.split('!')[6]:
+                                    dat += '&'
+                                dat += f'{dt.datetime.now()}$Планиметрия$Задание 1'
+                                addiction += inf + dat
+                            with open('Data/save_last_enter.txt', 'w') as f:
+                                f.write(addiction)
+                            a = request(f'!up {addiction.split("!")[1]}!{addiction.split("!")[6]}')
+                            if a != '!Success':
+                                error_box(f'Не удалось сохранить результат: {a}')
+                        except Exception as e:
+                            print(f'Updating data error: {e}')
                     else:
                         self.answer1.setStyleSheet('background-color: rgb(255, 0, 0);')
             elif self.choose == 'Tasks for movement':
                 with open('Data/Practice/Tasks for movement/T_1.txt', 'r') as ans:
                     if self.answer1.text() in ans.readline().split('!'):
                         self.answer1.setStyleSheet('background-color: rgb(0, 255, 0);')
+                        try:
+                            addiction = ''
+                            dat = ''
+                            with open('Data/save_last_enter.txt', 'r') as f:
+                                inf = f.readline()
+                                if inf.split('!')[6]:
+                                    dat += '&'
+                                dat += f'{dt.datetime.now()}$Задачи на движение$Задание 1'
+                                addiction += inf + dat
+                            with open('Data/save_last_enter.txt', 'w') as f:
+                                f.write(addiction)
+                            a = request(f'!up {addiction.split("!")[1]}!{addiction.split("!")[6]}')
+                            if a != '!Success':
+                                error_box(f'Не удалось сохранить результат: {a}')
+                        except Exception as e:
+                            print(f'Updating data error: {e}')
                     else:
                         self.answer1.setStyleSheet('background-color: rgb(255, 0, 0);')
             elif self.choose == 'Work':
                 with open('Data/Practice/Work/W_1.txt', 'r') as ans:
                     if self.answer1.text() in ans.readline().split('!'):
                         self.answer1.setStyleSheet('background-color: rgb(0, 255, 0);')
+                        try:
+                            addiction = ''
+                            dat = ''
+                            with open('Data/save_last_enter.txt', 'r') as f:
+                                inf = f.readline()
+                                if inf.split('!')[6]:
+                                    dat += '&'
+                                dat += f'{dt.datetime.now()}$Задачи на работу$Задание 1'
+                                addiction += inf + dat
+                            with open('Data/save_last_enter.txt', 'w') as f:
+                                f.write(addiction)
+                            a = request(f'!up {addiction.split("!")[1]}!{addiction.split("!")[6]}')
+                            if a != '!Success':
+                                error_box(f'Не удалось сохранить результат: {a}')
+                        except Exception as e:
+                            print(f'Updating data error: {e}')
                     else:
                         self.answer1.setStyleSheet('background-color: rgb(255, 0, 0);')
         except Exception as e:
@@ -441,24 +506,88 @@ class PracticeWidget(QMainWindow):
             with open('Data/Practice/Probability/Pr_2.txt', 'r') as ans:
                 if self.answer2.text() in ans.readline().split('!'):
                     self.answer2.setStyleSheet('background-color: rgb(0, 255, 0);')
+                    try:
+                        addiction = ''
+                        dat = ''
+                        with open('Data/save_last_enter.txt', 'r') as f:
+                            inf = f.readline()
+                            if inf.split('!')[6]:
+                                dat += '&'
+                            dat += f'{dt.datetime.now()}$Теория вероятности$Задание 2'
+                            addiction += inf + dat
+                        with open('Data/save_last_enter.txt', 'w') as f:
+                            f.write(addiction)
+                        a = request(f'!up {addiction.split("!")[1]}!{addiction.split("!")[6]}')
+                        if a != '!Success':
+                            error_box(f'Не удалось сохранить результат: {a}')
+                    except Exception as e:
+                        print(f'Updating data error: {e}')
                 else:
                     self.answer2.setStyleSheet('background-color: rgb(255, 0, 0);')
         elif self.choose == 'Planimetry':
             with open('Data/Practice/Planimetry/Pl_2.txt', 'r') as ans:
                 if self.answer2.text() in ans.readline().split('!'):
                     self.answer2.setStyleSheet('background-color: rgb(0, 255, 0);')
+                    try:
+                        addiction = ''
+                        dat = ''
+                        with open('Data/save_last_enter.txt', 'r') as f:
+                            inf = f.readline()
+                            if inf.split('!')[6]:
+                                dat += '&'
+                            dat += f'{dt.datetime.now()}$Планиметрия$Задание 2'
+                            addiction += inf + dat
+                        with open('Data/save_last_enter.txt', 'w') as f:
+                            f.write(addiction)
+                        a = request(f'!up {addiction.split("!")[1]}!{addiction.split("!")[6]}')
+                        if a != '!Success':
+                            error_box(f'Не удалось сохранить результат: {a}')
+                    except Exception as e:
+                        print(f'Updating data error: {e}')
                 else:
                     self.answer2.setStyleSheet('background-color: rgb(255, 0, 0);')
         elif self.choose == 'Tasks for movement':
             with open('Data/Practice/Tasks for movement/T_2.txt', 'r') as ans:
                 if self.answer2.text() in ans.readline().split('!'):
                     self.answer2.setStyleSheet('background-color: rgb(0, 255, 0);')
+                    try:
+                        addiction = ''
+                        dat = ''
+                        with open('Data/save_last_enter.txt', 'r') as f:
+                            inf = f.readline()
+                            if inf.split('!')[6]:
+                                dat += '&'
+                            dat += f'{dt.datetime.now()}$Задачи на движение$Задание 2'
+                            addiction += inf + dat
+                        with open('Data/save_last_enter.txt', 'w') as f:
+                            f.write(addiction)
+                        a = request(f'!up {addiction.split("!")[1]}!{addiction.split("!")[6]}')
+                        if a != '!Success':
+                            error_box(f'Не удалось сохранить результат: {a}')
+                    except Exception as e:
+                        print(f'Updating data error: {e}')
                 else:
                     self.answer2.setStyleSheet('background-color: rgb(255, 0, 0);')
         elif self.choose == 'Work':
             with open('Data/Practice/Work/W_2.txt', 'r') as ans:
                 if self.answer2.text() in ans.readline().split('!'):
                     self.answer2.setStyleSheet('background-color: rgb(0, 255, 0);')
+                    try:
+                        addiction = ''
+                        dat = ''
+                        with open('Data/save_last_enter.txt', 'r') as f:
+                            inf = f.readline()
+                            if inf.split('!')[6]:
+                                dat += '&'
+                            dat += f'{dt.datetime.now()}$Задачи на работу$Задание 2'
+                            addiction += inf + dat
+                        with open('Data/save_last_enter.txt', 'w') as f:
+                            f.write(addiction)
+                        a = request(f'!up {addiction.split("!")[1]}!{addiction.split("!")[6]}')
+                        if a != '!Success':
+                            error_box(f'Не удалось сохранить результат: {a}')
+                    except Exception as e:
+                        print(f'Updating data error: {e}')
                 else:
                     self.answer2.setStyleSheet('background-color: rgb(255, 0, 0);')
 
@@ -467,24 +596,88 @@ class PracticeWidget(QMainWindow):
             with open('Data/Practice/Probability/Pr_3.txt', 'r') as ans:
                 if self.answer3.text() in ans.readline().split('!'):
                     self.answer3.setStyleSheet('background-color: rgb(0, 255, 0);')
+                    try:
+                        addiction = ''
+                        dat = ''
+                        with open('Data/save_last_enter.txt', 'r') as f:
+                            inf = f.readline()
+                            if inf.split('!')[6]:
+                                dat += '&'
+                            dat += f'{dt.datetime.now()}$Теория вероятности$Задание 3'
+                            addiction += inf + dat
+                        with open('Data/save_last_enter.txt', 'w') as f:
+                            f.write(addiction)
+                        a = request(f'!up {addiction.split("!")[1]}!{addiction.split("!")[6]}')
+                        if a != '!Success':
+                            error_box(f'Не удалось сохранить результат: {a}')
+                    except Exception as e:
+                        print(f'Updating data error: {e}')
                 else:
                     self.answer3.setStyleSheet('background-color: rgb(255, 0, 0);')
         elif self.choose == 'Planimetry':
             with open('Data/Practice/Planimetry/Pl_3.txt', 'r') as ans:
                 if self.answer3.text() in ans.readline().split('!'):
                     self.answer3.setStyleSheet('background-color: rgb(0, 255, 0);')
+                    try:
+                        addiction = ''
+                        dat = ''
+                        with open('Data/save_last_enter.txt', 'r') as f:
+                            inf = f.readline()
+                            if inf.split('!')[6]:
+                                dat += '&'
+                            dat += f'{dt.datetime.now()}$Планиметрия$Задание 3'
+                            addiction += inf + dat
+                        with open('Data/save_last_enter.txt', 'w') as f:
+                            f.write(addiction)
+                        a = request(f'!up {addiction.split("!")[1]}!{addiction.split("!")[6]}')
+                        if a != '!Success':
+                            error_box(f'Не удалось сохранить результат: {a}')
+                    except Exception as e:
+                        print(f'Updating data error: {e}')
                 else:
                     self.answer3.setStyleSheet('background-color: rgb(255, 0, 0);')
         elif self.choose == 'Tasks for movement':
             with open('Data/Practice/Tasks for movement/T_3.txt', 'r') as ans:
                 if self.answer3.text() in ans.readline().split('!'):
                     self.answer3.setStyleSheet('background-color: rgb(0, 255, 0);')
+                    try:
+                        addiction = ''
+                        dat = ''
+                        with open('Data/save_last_enter.txt', 'r') as f:
+                            inf = f.readline()
+                            if inf.split('!')[6]:
+                                dat += '&'
+                            dat += f'{dt.datetime.now()}$Задачи на движение$Задание 3'
+                            addiction += inf + dat
+                        with open('Data/save_last_enter.txt', 'w') as f:
+                            f.write(addiction)
+                        a = request(f'!up {addiction.split("!")[1]}!{addiction.split("!")[6]}')
+                        if a != '!Success':
+                            error_box(f'Не удалось сохранить результат: {a}')
+                    except Exception as e:
+                        print(f'Updating data error: {e}')
                 else:
                     self.answer3.setStyleSheet('background-color: rgb(255, 0, 0);')
         elif self.choose == 'Work':
             with open('Data/Practice/Work/W_3.txt', 'r') as ans:
                 if self.answer3.text() in ans.readline().split('!'):
                     self.answer3.setStyleSheet('background-color: rgb(0, 255, 0);')
+                    try:
+                        addiction = ''
+                        dat = ''
+                        with open('Data/save_last_enter.txt', 'r') as f:
+                            inf = f.readline()
+                            if inf.split('!')[6]:
+                                dat += '&'
+                            dat += f'{dt.datetime.now()}$Задачи на работу$Задание 3'
+                            addiction += inf + dat
+                        with open('Data/save_last_enter.txt', 'w') as f:
+                            f.write(addiction)
+                        a = request(f'!up {addiction.split("!")[1]}!{addiction.split("!")[6]}')
+                        if a != '!Success':
+                            error_box(f'Не удалось сохранить результат: {a}')
+                    except Exception as e:
+                        print(f'Updating data error: {e}')
                 else:
                     self.answer3.setStyleSheet('background-color: rgb(255, 0, 0);')
 
@@ -493,24 +686,88 @@ class PracticeWidget(QMainWindow):
             with open('Data/Practice/Probability/Pr_4.txt', 'r') as ans:
                 if self.answer4.text() in ans.readline().split('!'):
                     self.answer4.setStyleSheet('background-color: rgb(0, 255, 0);')
+                    try:
+                        addiction = ''
+                        dat = ''
+                        with open('Data/save_last_enter.txt', 'r') as f:
+                            inf = f.readline()
+                            if inf.split('!')[6]:
+                                dat += '&'
+                            dat += f'{dt.datetime.now()}$Теория вероятности$Задание 4'
+                            addiction += inf + dat
+                        with open('Data/save_last_enter.txt', 'w') as f:
+                            f.write(addiction)
+                        a = request(f'!up {addiction.split("!")[1]}!{addiction.split("!")[6]}')
+                        if a != '!Success':
+                            error_box(f'Не удалось сохранить результат: {a}')
+                    except Exception as e:
+                        print(f'Updating data error: {e}')
                 else:
                     self.answer4.setStyleSheet('background-color: rgb(255, 0, 0);')
         elif self.choose == 'Planimetry':
             with open('Data/Practice/Planimetry/Pl_4.txt', 'r') as ans:
                 if self.answer4.text() in ans.readline().split('!'):
                     self.answer4.setStyleSheet('background-color: rgb(0, 255, 0);')
+                    try:
+                        addiction = ''
+                        dat = ''
+                        with open('Data/save_last_enter.txt', 'r') as f:
+                            inf = f.readline()
+                            if inf.split('!')[6]:
+                                dat += '&'
+                            dat += f'{dt.datetime.now()}$Планиметрия$Задание 4'
+                            addiction += inf + dat
+                        with open('Data/save_last_enter.txt', 'w') as f:
+                            f.write(addiction)
+                        a = request(f'!up {addiction.split("!")[1]}!{addiction.split("!")[6]}')
+                        if a != '!Success':
+                            error_box(f'Не удалось сохранить результат: {a}')
+                    except Exception as e:
+                        print(f'Updating data error: {e}')
                 else:
                     self.answer4.setStyleSheet('background-color: rgb(255, 0, 0);')
         elif self.choose == 'Tasks for movement':
             with open('Data/Practice/Tasks for movement/T_4.txt', 'r') as ans:
                 if self.answer4.text() in ans.readline().split('!'):
                     self.answer4.setStyleSheet('background-color: rgb(0, 255, 0);')
+                    try:
+                        addiction = ''
+                        dat = ''
+                        with open('Data/save_last_enter.txt', 'r') as f:
+                            inf = f.readline()
+                            if inf.split('!')[6]:
+                                dat += '&'
+                            dat += f'{dt.datetime.now()}$Задачи на движение$Задание 4'
+                            addiction += inf + dat
+                        with open('Data/save_last_enter.txt', 'w') as f:
+                            f.write(addiction)
+                        a = request(f'!up {addiction.split("!")[1]}!{addiction.split("!")[6]}')
+                        if a != '!Success':
+                            error_box(f'Не удалось сохранить результат: {a}')
+                    except Exception as e:
+                        print(f'Updating data error: {e}')
                 else:
                     self.answer4.setStyleSheet('background-color: rgb(255, 0, 0);')
         elif self.choose == 'Work':
             with open('Data/Practice/Work/W_4.txt', 'r') as ans:
                 if self.answer4.text() in ans.readline().split('!'):
                     self.answer4.setStyleSheet('background-color: rgb(0, 255, 0);')
+                    try:
+                        addiction = ''
+                        dat = ''
+                        with open('Data/save_last_enter.txt', 'r') as f:
+                            inf = f.readline()
+                            if inf.split('!')[6]:
+                                dat += '&'
+                            dat += f'{dt.datetime.now()}$Задачи на работу$Задание 4'
+                            addiction += inf + dat
+                        with open('Data/save_last_enter.txt', 'w') as f:
+                            f.write(addiction)
+                        a = request(f'!up {addiction.split("!")[1]}!{addiction.split("!")[6]}')
+                        if a != '!Success':
+                            error_box(f'Не удалось сохранить результат: {a}')
+                    except Exception as e:
+                        print(f'Updating data error: {e}')
                 else:
                     self.answer4.setStyleSheet('background-color: rgb(255, 0, 0);')
 
@@ -519,24 +776,88 @@ class PracticeWidget(QMainWindow):
             with open('Data/Practice/Probability/Pr_5.txt', 'r') as ans:
                 if self.answer5.text() in ans.readline().split('!'):
                     self.answer5.setStyleSheet('background-color: rgb(0, 255, 0);')
+                    try:
+                        addiction = ''
+                        dat = ''
+                        with open('Data/save_last_enter.txt', 'r') as f:
+                            inf = f.readline()
+                            if inf.split('!')[6]:
+                                dat += '&'
+                            dat += f'{dt.datetime.now()}$Теория вероятности$Задание 5'
+                            addiction += inf + dat
+                        with open('Data/save_last_enter.txt', 'w') as f:
+                            f.write(addiction)
+                        a = request(f'!up {addiction.split("!")[1]}!{addiction.split("!")[6]}')
+                        if a != '!Success':
+                            error_box(f'Не удалось сохранить результат: {a}')
+                    except Exception as e:
+                        print(f'Updating data error: {e}')
                 else:
                     self.answer5.setStyleSheet('background-color: rgb(255, 0, 0);')
         elif self.choose == 'Planimetry':
             with open('Data/Practice/Planimetry/Pl_5.txt', 'r') as ans:
                 if self.answer5.text() in ans.readline().split('!'):
                     self.answer5.setStyleSheet('background-color: rgb(0, 255, 0);')
+                    try:
+                        addiction = ''
+                        dat = ''
+                        with open('Data/save_last_enter.txt', 'r') as f:
+                            inf = f.readline()
+                            if inf.split('!')[6]:
+                                dat += '&'
+                            dat += f'{dt.datetime.now()}$Планиметрия$Задание 5'
+                            addiction += inf + dat
+                        with open('Data/save_last_enter.txt', 'w') as f:
+                            f.write(addiction)
+                        a = request(f'!up {addiction.split("!")[1]}!{addiction.split("!")[6]}')
+                        if a != '!Success':
+                            error_box(f'Не удалось сохранить результат: {a}')
+                    except Exception as e:
+                        print(f'Updating data error: {e}')
                 else:
                     self.answer5.setStyleSheet('background-color: rgb(255, 0, 0);')
         elif self.choose == 'Tasks for movement':
             with open('Data/Practice/Tasks for movement/T_5.txt', 'r') as ans:
                 if self.answer5.text() in ans.readline().split('!'):
                     self.answer5.setStyleSheet('background-color: rgb(0, 255, 0);')
+                    try:
+                        addiction = ''
+                        dat = ''
+                        with open('Data/save_last_enter.txt', 'r') as f:
+                            inf = f.readline()
+                            if inf.split('!')[6]:
+                                dat += '&'
+                            dat += f'{dt.datetime.now()}$Задачи на движение$Задание 5'
+                            addiction += inf + dat
+                        with open('Data/save_last_enter.txt', 'w') as f:
+                            f.write(addiction)
+                        a = request(f'!up {addiction.split("!")[1]}!{addiction.split("!")[6]}')
+                        if a != '!Success':
+                            error_box(f'Не удалось сохранить результат: {a}')
+                    except Exception as e:
+                        print(f'Updating data error: {e}')
                 else:
                     self.answer5.setStyleSheet('background-color: rgb(255, 0, 0);')
         elif self.choose == 'Work':
             with open('Data/Practice/Work/W_5.txt', 'r') as ans:
                 if self.answer5.text() in ans.readline().split('!'):
                     self.answer5.setStyleSheet('background-color: rgb(0, 255, 0);')
+                    try:
+                        addiction = ''
+                        dat = ''
+                        with open('Data/save_last_enter.txt', 'r') as f:
+                            inf = f.readline()
+                            if inf.split('!')[6]:
+                                dat += '&'
+                            dat += f'{dt.datetime.now()}$Задачи на работу$Задание 2'
+                            addiction += inf + dat
+                        with open('Data/save_last_enter.txt', 'w') as f:
+                            f.write(addiction)
+                        a = request(f'!up {addiction.split("!")[1]}!{addiction.split("!")[6]}')
+                        if a != '!Success':
+                            error_box(f'Не удалось сохранить результат: {a}')
+                    except Exception as e:
+                        print(f'Updating data error: {e}')
                 else:
                     self.answer5.setStyleSheet('background-color: rgb(255, 0, 0);')
 
