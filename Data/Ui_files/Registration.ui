@@ -15,8 +15,7 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(255, 0, 255);
-background-color: rgba(0, 0, 0, 25);
+    <string notr="true">background-color: qlineargradient(spread:pad, x1:1, y1:1, x2:1, y2:0, stop:0 rgba(142, 84, 21, 255), stop:1 rgba(149, 60, 46, 255));
     </string>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -47,6 +46,19 @@ background-color: rgba(0, 0, 0, 25);
            </property>
           </spacer>
          </item>
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
         </layout>
        </widget>
       </item>
@@ -66,6 +78,7 @@ background-color: rgba(0, 0, 0, 25);
         </property>
         <property name="styleSheet">
          <string notr="true">background-color: rgb(255, 255, 255);
+border-radius: 10px;
 
 </string>
         </property>
@@ -108,7 +121,10 @@ background-color: rgba(0, 0, 0, 25);
                <string notr="true">color: rgb(0, 0, 0);</string>
               </property>
               <property name="text">
-               <string>Double E</string>
+               <string/>
+              </property>
+              <property name="pixmap">
+               <pixmap>../../../../Desktop/Instruments packs/My works/1x/Ресурс.png</pixmap>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
@@ -136,9 +152,21 @@ background-color: rgba(0, 0, 0, 25);
                </item>
                <item>
                 <widget class="QLineEdit" name="login">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>10</pointsize>
+                  </font>
+                 </property>
                  <property name="styleSheet">
-                  <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(100, 100, 100);</string>
+                  <string notr="true">background-color: rgba(0, 0, 0, 30);
+color: rgb(0, 0, 0);
+padding-left: 3px;</string>
                  </property>
                  <property name="text">
                   <string/>
@@ -150,10 +178,21 @@ color: rgb(100, 100, 100);</string>
                </item>
                <item>
                 <widget class="QLineEdit" name="password">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>10</pointsize>
+                  </font>
+                 </property>
                  <property name="styleSheet">
-                  <string notr="true">background-color: rgb(255, 255, 255);
-color: rgb(100, 100, 100);
-border-top-left-radius</string>
+                  <string notr="true">background-color: rgba(0, 0, 0, 30);
+color: rgb(0, 0, 0);
+padding-left: 3px;</string>
                  </property>
                  <property name="placeholderText">
                   <string>password</string>
@@ -162,9 +201,21 @@ border-top-left-radius</string>
                </item>
                <item>
                 <widget class="QLineEdit" name="password1">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>10</pointsize>
+                  </font>
+                 </property>
                  <property name="styleSheet">
-                  <string notr="true">background-color: rgb(255, 255, 255);
-                   color: rgb(100, 100, 100);</string>
+                  <string notr="true">background-color: rgba(0, 0, 0, 30);
+color: rgb(0, 0, 0);
+padding-left: 3px;</string>
                  </property>
                  <property name="placeholderText">
                   <string>confirm the password</string>
@@ -204,9 +255,22 @@ border-top-left-radius</string>
             </item>
             <item>
              <widget class="QPushButton" name="registration">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>40</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>10</pointsize>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
               <property name="styleSheet">
-               <string notr="true">background-color: rgb(255, 255, 255);
-background-color: rgb(225, 225, 225);</string>
+               <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(153, 41, 234, 255), stop:1 rgba(88, 8, 251, 255));
+color: rgb(255, 255, 255);</string>
               </property>
               <property name="text">
                <string>Регистрация</string>
@@ -215,8 +279,19 @@ background-color: rgb(225, 225, 225);</string>
             </item>
             <item>
              <widget class="QPushButton" name="exit">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>40</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
               <property name="styleSheet">
-               <string notr="true">background-color: rgb(225, 225, 225);</string>
+               <string notr="true">background-color: rgb(240, 240, 240);</string>
               </property>
               <property name="text">
                <string>Выход</string>
@@ -258,6 +333,19 @@ background-color: rgb(225, 225, 225);</string>
          <enum>QFrame::Raised</enum>
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout_5">
+         <item>
+          <spacer name="horizontalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
          <item>
           <spacer name="pacl1">
            <property name="orientation">
