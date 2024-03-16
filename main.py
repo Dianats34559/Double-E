@@ -269,6 +269,8 @@ class TheoryWidget(QMainWindow):
         self.profile.triggered.connect(self.go_profile)
         self.practice.triggered.connect(self.go_practice)
         self.probability.triggered.connect(self.get_probability)
+        self.planimetry.triggered.connect(self.get_planimetry)
+        self.movement.triggered.connect(self.get_movement)
         with codecs.open(u'Data/Theory/Probability.html', 'r', 'utf-8') as html:
             self.textBrowser.setHtml(''.join(html.readlines()))
 
@@ -293,6 +295,14 @@ class TheoryWidget(QMainWindow):
 
     def get_probability(self):
         with codecs.open(u'Data/Theory/Probability.html', 'r', 'utf-8') as html:
+            self.textBrowser.setHtml(''.join(html.readlines()))
+
+    def get_planimetry(self):
+        with codecs.open(u'Data/Theory/Planimetry.html', 'r', 'utf-8') as html:
+            self.textBrowser.setHtml(''.join(html.readlines()))
+
+    def get_movement(self):
+        with codecs.open(u'Data/Theory/Tasks.html', 'r', 'utf-8') as html:
             self.textBrowser.setHtml(''.join(html.readlines()))
 
 
