@@ -78,7 +78,7 @@ def update_progress(username, progress):
     con = sql.connect('eedb.db')
     try:
         cur = con.cursor()
-        cur.execute(f"""UPDATE Users SET dates = {progress} WHERE name = '{username}'""")
+        cur.execute(f"""UPDATE Users SET dates = '{progress}' WHERE name = '{username}'""")
         con.commit()
         cur.close()
         con.close()
