@@ -307,7 +307,7 @@ class TheoryWidget(QMainWindow):
             self.textBrowser.setHtml(''.join(html.readlines()))
 
 
-# Practice Window
+# Practice Window (done)
 class PracticeWidget(QMainWindow):
     # installation window
     def __init__(self):
@@ -421,7 +421,7 @@ class PracticeWidget(QMainWindow):
                                 inf = f.readline()
                                 if inf.split('!')[6]:
                                     dat += '&'
-                                dat += f'{dt.datetime.now()}$Теория вероятности$Задание 1'
+                                dat += f'{"".join(str(dt.date.today()).split(" "))}$Теория_вероятности$Задание_1'
                                 addiction += inf + dat
                             with open('Data/save_last_enter.txt', 'w') as f:
                                 f.write(addiction)
@@ -443,7 +443,7 @@ class PracticeWidget(QMainWindow):
                                 inf = f.readline()
                                 if inf.split('!')[6]:
                                     dat += '&'
-                                dat += f'{dt.datetime.now()}$Планиметрия$Задание 1'
+                                dat += f'{"".join(str(dt.date.today()).split(" "))}$Планиметрия$Задание_1'
                                 addiction += inf + dat
                             with open('Data/save_last_enter.txt', 'w') as f:
                                 f.write(addiction)
@@ -465,7 +465,7 @@ class PracticeWidget(QMainWindow):
                                 inf = f.readline()
                                 if inf.split('!')[6]:
                                     dat += '&'
-                                dat += f'{dt.datetime.now()}$Задачи на движение$Задание 1'
+                                dat += f'{"".join(str(dt.date.today()).split(" "))}$Задачи_на_движение$Задание_1'
                                 addiction += inf + dat
                             with open('Data/save_last_enter.txt', 'w') as f:
                                 f.write(addiction)
@@ -487,7 +487,7 @@ class PracticeWidget(QMainWindow):
                                 inf = f.readline()
                                 if inf.split('!')[6]:
                                     dat += '&'
-                                dat += f'{dt.datetime.now()}$Задачи на работу$Задание 1'
+                                dat += f'{"".join(str(dt.date.today()).split(" "))}$Задачи_на_работу$Задание_1'
                                 addiction += inf + dat
                             with open('Data/save_last_enter.txt', 'w') as f:
                                 f.write(addiction)
@@ -513,7 +513,7 @@ class PracticeWidget(QMainWindow):
                             inf = f.readline()
                             if inf.split('!')[6]:
                                 dat += '&'
-                            dat += f'{dt.datetime.now()}$Теория вероятности$Задание 2'
+                            dat += f'{"".join(str(dt.date.today()).split(" "))}$Теория_вероятности$Задание_2'
                             addiction += inf + dat
                         with open('Data/save_last_enter.txt', 'w') as f:
                             f.write(addiction)
@@ -535,7 +535,7 @@ class PracticeWidget(QMainWindow):
                             inf = f.readline()
                             if inf.split('!')[6]:
                                 dat += '&'
-                            dat += f'{dt.datetime.now()}$Планиметрия$Задание 2'
+                            dat += f'{"".join(str(dt.date.today()).split(" "))}$Планиметрия$Задание_2'
                             addiction += inf + dat
                         with open('Data/save_last_enter.txt', 'w') as f:
                             f.write(addiction)
@@ -557,7 +557,7 @@ class PracticeWidget(QMainWindow):
                             inf = f.readline()
                             if inf.split('!')[6]:
                                 dat += '&'
-                            dat += f'{dt.datetime.now()}$Задачи на движение$Задание 2'
+                            dat += f'{"".join(str(dt.date.today()).split(" "))}$Задачи_на_движение$Задание_2'
                             addiction += inf + dat
                         with open('Data/save_last_enter.txt', 'w') as f:
                             f.write(addiction)
@@ -579,7 +579,7 @@ class PracticeWidget(QMainWindow):
                             inf = f.readline()
                             if inf.split('!')[6]:
                                 dat += '&'
-                            dat += f'{dt.datetime.now()}$Задачи на работу$Задание 2'
+                            dat += f'{"".join(str(dt.date.today()).split(" "))}$Задачи_на_работу$Задание_2'
                             addiction += inf + dat
                         with open('Data/save_last_enter.txt', 'w') as f:
                             f.write(addiction)
@@ -603,7 +603,7 @@ class PracticeWidget(QMainWindow):
                             inf = f.readline()
                             if inf.split('!')[6]:
                                 dat += '&'
-                            dat += f'{dt.datetime.now()}$Теория вероятности$Задание 3'
+                            dat += f'{"".join(str(dt.date.today()).split(" "))}$Теория_вероятности$Задание_3'
                             addiction += inf + dat
                         with open('Data/save_last_enter.txt', 'w') as f:
                             f.write(addiction)
@@ -625,7 +625,7 @@ class PracticeWidget(QMainWindow):
                             inf = f.readline()
                             if inf.split('!')[6]:
                                 dat += '&'
-                            dat += f'{dt.datetime.now()}$Планиметрия$Задание 3'
+                            dat += f'{"".join(str(dt.date.today()).split(" "))}$Планиметрия$Задание_3'
                             addiction += inf + dat
                         with open('Data/save_last_enter.txt', 'w') as f:
                             f.write(addiction)
@@ -647,7 +647,7 @@ class PracticeWidget(QMainWindow):
                             inf = f.readline()
                             if inf.split('!')[6]:
                                 dat += '&'
-                            dat += f'{dt.datetime.now()}$Задачи на движение$Задание 3'
+                            dat += f'{"".join(str(dt.date.today()).split(" "))}$Задачи_на_движение$Задание_3'
                             addiction += inf + dat
                         with open('Data/save_last_enter.txt', 'w') as f:
                             f.write(addiction)
@@ -669,7 +669,7 @@ class PracticeWidget(QMainWindow):
                             inf = f.readline()
                             if inf.split('!')[6]:
                                 dat += '&'
-                            dat += f'{dt.datetime.now()}$Задачи на работу$Задание 3'
+                            dat += f'{"".join(str(dt.date.today()).split(" "))}$Задачи_на_работу$Задание_3'
                             addiction += inf + dat
                         with open('Data/save_last_enter.txt', 'w') as f:
                             f.write(addiction)
@@ -693,7 +693,7 @@ class PracticeWidget(QMainWindow):
                             inf = f.readline()
                             if inf.split('!')[6]:
                                 dat += '&'
-                            dat += f'{dt.datetime.now()}$Теория вероятности$Задание 4'
+                            dat += f'{"".join(str(dt.date.today()).split(" "))}$Теория_вероятности$Задание_4'
                             addiction += inf + dat
                         with open('Data/save_last_enter.txt', 'w') as f:
                             f.write(addiction)
@@ -715,7 +715,7 @@ class PracticeWidget(QMainWindow):
                             inf = f.readline()
                             if inf.split('!')[6]:
                                 dat += '&'
-                            dat += f'{dt.datetime.now()}$Планиметрия$Задание 4'
+                            dat += f'{"".join(str(dt.date.today()).split(" "))}$Планиметрия$Задание_4'
                             addiction += inf + dat
                         with open('Data/save_last_enter.txt', 'w') as f:
                             f.write(addiction)
@@ -737,7 +737,7 @@ class PracticeWidget(QMainWindow):
                             inf = f.readline()
                             if inf.split('!')[6]:
                                 dat += '&'
-                            dat += f'{dt.datetime.now()}$Задачи на движение$Задание 4'
+                            dat += f'{"".join(str(dt.date.today()).split(" "))}$Задачи_на_движение$Задание_4'
                             addiction += inf + dat
                         with open('Data/save_last_enter.txt', 'w') as f:
                             f.write(addiction)
@@ -759,7 +759,7 @@ class PracticeWidget(QMainWindow):
                             inf = f.readline()
                             if inf.split('!')[6]:
                                 dat += '&'
-                            dat += f'{dt.datetime.now()}$Задачи на работу$Задание 4'
+                            dat += f'{"".join(str(dt.date.today()).split(" "))}$Задачи_на_работу$Задание_4'
                             addiction += inf + dat
                         with open('Data/save_last_enter.txt', 'w') as f:
                             f.write(addiction)
@@ -783,7 +783,7 @@ class PracticeWidget(QMainWindow):
                             inf = f.readline()
                             if inf.split('!')[6]:
                                 dat += '&'
-                            dat += f'{dt.datetime.now()}$Теория вероятности$Задание 5'
+                            dat += f'{"".join(str(dt.date.today()).split(" "))}$Теория_вероятности$Задание_5'
                             addiction += inf + dat
                         with open('Data/save_last_enter.txt', 'w') as f:
                             f.write(addiction)
@@ -805,7 +805,7 @@ class PracticeWidget(QMainWindow):
                             inf = f.readline()
                             if inf.split('!')[6]:
                                 dat += '&'
-                            dat += f'{dt.datetime.now()}$Планиметрия$Задание 5'
+                            dat += f'{"".join(str(dt.date.today()).split(" "))}$Планиметрия$Задание_5'
                             addiction += inf + dat
                         with open('Data/save_last_enter.txt', 'w') as f:
                             f.write(addiction)
@@ -827,7 +827,7 @@ class PracticeWidget(QMainWindow):
                             inf = f.readline()
                             if inf.split('!')[6]:
                                 dat += '&'
-                            dat += f'{dt.datetime.now()}$Задачи на движение$Задание 5'
+                            dat += f'{"".join(str(dt.date.today()).split(" "))}$Задачи_на_движение$Задание_5'
                             addiction += inf + dat
                         with open('Data/save_last_enter.txt', 'w') as f:
                             f.write(addiction)
@@ -849,7 +849,7 @@ class PracticeWidget(QMainWindow):
                             inf = f.readline()
                             if inf.split('!')[6]:
                                 dat += '&'
-                            dat += f'{dt.datetime.now()}$Задачи на работу$Задание 2'
+                            dat += f'{"".join(str(dt.date.today()).split(" "))}$Задачи_на_работу$Задание_2'
                             addiction += inf + dat
                         with open('Data/save_last_enter.txt', 'w') as f:
                             f.write(addiction)

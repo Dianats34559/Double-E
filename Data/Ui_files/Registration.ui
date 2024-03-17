@@ -124,7 +124,7 @@ border-radius: 10px;
                <string/>
               </property>
               <property name="pixmap">
-               <pixmap>../../../../Desktop/Instruments packs/My works/1x/Ресурс.png</pixmap>
+               <pixmap>../Images/DoubleE.png</pixmap>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>
